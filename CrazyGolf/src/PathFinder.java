@@ -19,14 +19,14 @@ public class PathFinder {
         Vector tmpVec = v;
         vectors.clear();
 
-        System.out.println(String.format("%f, %f - %f, %f", v.x, v.y, v.dx, v.dy));
+//        System.out.println(String.format("%f, %f - %f, %f", v.x, v.y, v.dx, v.dy));
 
         List<Collisionable> collisions = new LinkedList<Collisionable>();
 
         resolve(collisions);
-        for (Collisionable collision : collisions) {
-            System.out.println(collision.toString());
-        }
+//        for (Collisionable collision : collisions) {
+//            System.out.println(collision.toString());
+//        }
 
         while (cnt-- > 0) {
             if (tmpVec != null) {
