@@ -1,3 +1,4 @@
+import java.awt.*;
 import java.util.List;
 
 /**
@@ -5,4 +6,5 @@ import java.util.List;
  */
 public interface Primitive {
     public void resolve(List<Collisionable> list);
+    public void draw(Graphics2D g);
 }

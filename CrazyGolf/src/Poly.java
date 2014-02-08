@@ -1,3 +1,4 @@
+import java.awt.*;
 import java.util.List;
 
 /**
@@ -25,6 +26,11 @@ public class Poly implements Primitive {
 
             list.add(s);
         }
+
+    }
+
+    @Override
+    public void draw(Graphics2D g) {
 
     }
 }

@@ -19,4 +19,12 @@ public class dPoint implements Collisionable {
     public Vector bounce(Vector v, double l) {
         return null;
     }
+
+    public double getY() {
+        return y;
+    }
+
+    public double getX() {
+        return x;
+    }
 }
