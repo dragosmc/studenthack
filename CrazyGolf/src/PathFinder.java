@@ -21,7 +21,6 @@ public class PathFinder {
             System.out.println(collision.toString());
         }
 
-
         while (cnt-- > 0) {
             if(tmpVec != null)
                 tmpVec = _run(tmpVec, collisions);
@@ -50,6 +49,7 @@ public class PathFinder {
                     distance = d;
                     C = collision;
                 }
+                System.out.println(distance);
             } else {
                 System.out.println("NaN");
             }

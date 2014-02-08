@@ -12,7 +12,7 @@ public class dPoint implements Collisionable {
 
     @Override
     public double collidesAfter(Vector v) {
-        return 0;
+        return Double.NaN;
     }
 
     @Override
