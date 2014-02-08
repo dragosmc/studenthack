@@ -14,8 +14,8 @@ public class Triangle implements Primitive, Drawable, Dropable {
         centre = mid;
         corner = corn;
 
-        template.add(new dPoint(-1,0));
-        template.add(new dPoint(1,0));
+        template.add(new dPoint(-0.577,0));
+        template.add(new dPoint(0.577,0));
         template.add(new dPoint(0,1));
     }
 
