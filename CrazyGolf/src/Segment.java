@@ -7,31 +7,44 @@ public class Segment extends Vector implements Collisionable {
         double qX = v.getX() - x;
         double qY = v.getY() - y;
 
-        double vDx = v.getDir().getX();
-        double vDy = v.getDir().getY();
-        double uDx = dx;
-        double uDy = dy;
+        double uDx = v.getDir().getX();
+        double uDy = v.getDir().getY();
+        double vDx = dx;
+        double vDy = dy;
 
         double det = vDx * uDy - vDy * uDx;
 
         if (det == 0) return Double.NaN;
 
-        double beta = (vDx * qY - vDy * qX) / det;
-        double alpha = (uDx * qY - uDy * qX) / det;
+        double beta = -(uDx * qY - uDy * qX) / det;
+        double alpha = (vDy * qX - vDx * qY) / det;
 
         System.out.println(String.format("%f, %f", alpha, beta));
 
-        if (beta < 0 || beta > 1) return Double.NaN;
+        if (beta < 0 || beta > 1 || alpha < 0) return Double.NaN;
 
         return alpha;
     }
 
     @Override
     public Vector bounce(Vector v, double l) {
-        return null;
+        double Rx = v.x + v.dx * l;
+        double Ry = v.y + v.dy * l;
+
+        double det = dx * dx + dy * dy;
+        if(det == 0) return null;
+
+        double alpha = (v.dx * dx + v.dy * dy) / det;
+        double beta = (v.dx * -dy + v.dy * dx) / det;
+
+        Vector tmp = new Vector();
+        tmp.setLocation(Rx, Ry);
+        tmp.setDir(v.dx + 2 * beta * dy, v.dy - 2 * beta * dx);
+
+        return tmp;
     }
 
-    public String toString(){
+    public String toString() {
         return String.format("Segment [%f, %f]-[%f, %f]", x, y, dx, dy);
     }
 }

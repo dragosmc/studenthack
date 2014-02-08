@@ -31,7 +31,7 @@ public class Rect implements Primitive, Dropable, Drawable {
         for (int i = 0; i <=3; i++) {
             Segment s = new Segment();
             s.setLocation(tempList.get(i).getX(), tempList.get(i).getY());
-            if (i < 2) {
+            if (i < 3) {
                 s.setDir(tempList.get(i + 1).getX() - tempList.get(i).getX(),
                         tempList.get(i + 1).getY() - tempList.get(i).getY());
             } else {

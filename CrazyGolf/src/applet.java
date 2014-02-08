@@ -31,6 +31,8 @@ public class applet extends Applet {
         for (Drawable drawable : core.getDrawables()) {
             drawable.draw((Graphics2D) g);
         }
+
+        core.getPathFinder().draw(g);
     }
 
     public void removeMouseListeners(DrawableListener dl){
