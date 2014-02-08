@@ -28,4 +28,9 @@ public class applet extends Applet {
             drawable.draw((Graphics2D) g);
         }
     }
+
+    public void removeMouseListeners(DrawableListener dl){
+        this.removeMouseMotionListener(dl);
+        this.removeMouseListeners(dl);
+    }
 }

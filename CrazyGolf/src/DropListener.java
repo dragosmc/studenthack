@@ -32,8 +32,8 @@ public class DropListener extends DrawableListener {
                     Main.app.core.addDrawable((Drawable) current);
                     clickCount = 1;
                 } else {
-//                        Main.app.removeMouseListener(this);
-//                        Main.app.removeMouseMotionListener(this);
+                    Main.app.removeMouseListeners(this);
+
                     clickCount = 0;
                 }
             }
