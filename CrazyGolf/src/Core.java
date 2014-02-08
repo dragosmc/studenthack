@@ -13,6 +13,7 @@ public class Core {
     public Core() {
         primitiveList = new LinkedList<Primitive>();
         drawables = new LinkedList<Drawable>();
+        pathFinder = new PathFinder();
     }
 
     public List<Collisionable> resolvePrimitive() {
