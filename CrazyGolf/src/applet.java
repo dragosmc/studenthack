@@ -8,6 +8,9 @@ import java.awt.image.BufferedImage;
 public class applet extends Applet {
     Core core;
 
+    public applet(){
+        core = new Core();
+    }
     @Override
     public void update(Graphics g) {
         Image image = createImage(getWidth(), getHeight());
@@ -17,6 +20,8 @@ public class applet extends Applet {
 
     @Override
     public void paint(Graphics g) {
-
+        for (Drawable drawable : core.getDrawables()) {
+            drawable.draw((Graphics2D) g);
+        }
     }
 }

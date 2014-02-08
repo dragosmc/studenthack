@@ -7,6 +7,7 @@ import java.util.List;
 public class Core {
     // Contains a list of primitives
     private List<Primitive> primitiveList;
+    private List<Drawable> drawables;
 
     public List<Collisionable> resolvePrimitive() {
         List<Collisionable> tempList = new LinkedList<Collisionable>();
@@ -19,5 +20,9 @@ public class Core {
 
     public boolean addPrimitive(Primitive p) {
         return primitiveList.add(p);
+    }
+
+    public List<Drawable> getDrawables() {
+        return drawables;
     }
 }
