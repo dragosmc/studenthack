@@ -1,7 +1,5 @@
 import java.awt.*;
 import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
-import java.awt.event.MouseMotionListener;
 
 /**
  * Created by Adam Bedford on 08/02/14.
@@ -15,11 +13,6 @@ public class DropListener extends DrawableListener {
     public DropListener(DropType d) {
         dropType = d;
         clickCount = 0;
-    }
-
-    @Override
-    public void draw(Graphics g) {
-
     }
 
     @Override

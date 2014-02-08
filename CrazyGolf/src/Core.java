@@ -34,4 +34,9 @@ public class Core {
     public List<Drawable> getDrawables() {
         return drawables;
     }
+
+
+    public void removeDrawable(Drawable drawable) {
+        drawables.remove(drawable);
+    }
 }

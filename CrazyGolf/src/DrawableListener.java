@@ -7,7 +7,6 @@ import java.awt.event.MouseMotionListener;
  * Created by Adam Bedford on 08/02/14.
  */
 public abstract class DrawableListener implements MouseListener, MouseMotionListener {
-    public abstract void draw(Graphics g);
 
     @Override
     public abstract void mouseClicked(MouseEvent mouseEvent);

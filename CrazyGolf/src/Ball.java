@@ -20,4 +20,8 @@ public class Ball implements Drawable, Dropable {
     public void draw(Graphics2D g) {
 
     }
+
+    public Point getPoint() {
+        return point;
+    }
 }

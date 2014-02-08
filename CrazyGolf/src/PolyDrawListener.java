@@ -1,7 +1,5 @@
 import java.awt.*;
 import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
-import java.awt.event.MouseMotionListener;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -13,11 +11,6 @@ public class PolyDrawListener extends DrawableListener {
     private Point currentPoint;
     public boolean drawComplete = true;
     private Poly poly = null;
-
-    @Override
-    public void draw(Graphics g) {
-
-    }
 
     @Override
     public void mouseClicked(MouseEvent mouseEvent) {

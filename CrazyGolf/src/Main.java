@@ -1,6 +1,8 @@
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.WindowEvent;
+import java.awt.event.WindowListener;
 
 /**
  * Created by Adam Bedford on 08/02/14.
@@ -66,7 +68,14 @@ public class Main {
         Button setHole = new Button("SetHole");
         toolbarPanel.add(setHole);
 
-
+        Button setHittingDirection = new Button("Set hitting direction");
+        toolbarPanel.add(setHittingDirection);
+        setHittingDirection.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                app.addMouseListeners(new HitListener());
+            }
+        });
         appletPanel.add(app);
 
         //Rect rect = new Rect(new Point(100, 100), new Point(150, 150));
@@ -78,5 +87,42 @@ public class Main {
 //        app.addMouseMotionListener(dropListener);
 
         frame.setVisible(true);
+        frame.addWindowListener(new WindowListener() {
+            @Override
+            public void windowOpened(WindowEvent e) {
+
+            }
+
+            @Override
+            public void windowClosing(WindowEvent e) {
+                frame.setVisible(false);
+                System.exit(0);
+            }
+
+            @Override
+            public void windowClosed(WindowEvent e) {
+
+            }
+
+            @Override
+            public void windowIconified(WindowEvent e) {
+
+            }
+
+            @Override
+            public void windowDeiconified(WindowEvent e) {
+
+            }
+
+            @Override
+            public void windowActivated(WindowEvent e) {
+
+            }
+
+            @Override
+            public void windowDeactivated(WindowEvent e) {
+
+            }
+        });
     }
 }
