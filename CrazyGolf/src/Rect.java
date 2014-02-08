@@ -5,7 +5,7 @@ import java.util.List;
 /**
  * Created by Adam Bedford on 08/02/14.
  */
-public class Rect implements Primitive {
+public class Rect implements Primitive, Dropable {
     private Point centre;
     private Point midPoint;
 

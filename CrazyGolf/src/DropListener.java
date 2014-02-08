@@ -8,6 +8,11 @@ import java.awt.event.MouseMotionListener;
  */
 public class DropListener extends DrawableListener {
     private DropType dropType;
+    private Dropable current;
+
+    public DropListener(DropType d) {
+        dropType = d;
+    }
 
     @Override
     public void draw(Graphics g) {
@@ -16,17 +21,22 @@ public class DropListener extends DrawableListener {
 
     @Override
     public void mouseClicked(MouseEvent mouseEvent) {
+        switch (dropType) {
+            case Rect: {
 
-    }
+            }
+            break;
+            case Triangle: {
 
-    @Override
-    public void mousePressed(MouseEvent mouseEvent) {
+            }
+            break;
+            case Ball: {
 
-    }
+            } break;
+            case Hole: {
 
-    @Override
-    public void mouseReleased(MouseEvent mouseEvent) {
-
+            }break;
+        }
     }
 
     @Override
@@ -34,14 +44,14 @@ public class DropListener extends DrawableListener {
 
     }
 
-    public enum DropType{
+    public enum DropType {
         Ball,
         Hole,
         Rect,
         Triangle
     }
 
-    public void setDropType(DropType d){
+    public void setDropType(DropType d) {
         dropType = d;
     }
 

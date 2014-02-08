@@ -13,27 +13,25 @@ public abstract class DrawableListener implements MouseListener, MouseMotionList
     public abstract void mouseClicked(MouseEvent mouseEvent);
 
     @Override
-    public abstract void mousePressed(MouseEvent mouseEvent);
+    public void mousePressed(MouseEvent mouseEvent) {
+    }
 
     @Override
-    public abstract void mouseReleased(MouseEvent mouseEvent);
+    public void mouseReleased(MouseEvent mouseEvent) {
+    }
 
     @Override
     public void mouseEntered(MouseEvent mouseEvent) {
-
     }
 
     @Override
     public void mouseExited(MouseEvent mouseEvent) {
-
     }
 
     @Override
     public void mouseDragged(MouseEvent mouseEvent) {
-
     }
 
     @Override
     public abstract void mouseMoved(MouseEvent mouseEvent);
-
 }

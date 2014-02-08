@@ -4,7 +4,7 @@ import java.util.List;
 /**
  * Created by Adam Bedford on 08/02/14.
  */
-public class Poly implements Primitive {
+public class Poly implements Primitive, Drawable {
     public int n; //number of points in the polygon
     public int x[]; //x coordinates
     public int y[]; //y coordinates
