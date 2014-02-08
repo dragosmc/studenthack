@@ -16,9 +16,9 @@ public class Rect implements Primitive, Dropable, Drawable {
     //Ny = xABy + yABx + Ay
     //ABx = Bx - Ax
     //ABy = By - Ay
-    public Rect(Point centre, Point corner) {
+    public Rect(Point centre, Point midPoint) {
         this.centre = centre;
-        this.midPoint = corner;
+        this.midPoint = midPoint;
     }
 
     @Override
@@ -40,17 +40,20 @@ public class Rect implements Primitive, Dropable, Drawable {
 
             }
 
+            list.add(tempList.get(i));
+
         }
 
     }
 
     private dPoint getPoint(double templateX, double templateY) {
-        double Nx = templateX * (midPoint.getX() - centre.getX()) -
-                templateY * (midPoint.getY() - centre.getY()) +
-                centre.getX();
-        double Ny = templateX * (midPoint.getY() - centre.getY()) +
-                templateY * (midPoint.getX() - centre.getY()) +
-                centre.getY();
+        double Ax = centre.getX();
+        double ABx = midPoint.getX() - Ax;
+        double Ay = centre.getY();
+        double ABy = midPoint.getY() - Ay;
+
+        double Nx = templateX * ABx - templateY * ABy + Ax;
+        double Ny = templateX * ABy + templateY * ABx + Ay;
         return new dPoint(Nx, Ny);
     }
 
@@ -75,7 +78,7 @@ public class Rect implements Primitive, Dropable, Drawable {
         int[] y = new int[4];
 
         for (int i = 0; i < 3; i++) {
-            dPoint tmpPoint = getPoint(this.x[i], this.y[i]);
+            dPoint tmpPoint = getPoint(Rect.x[i], Rect.y[i]);
             x[i] = (int) tmpPoint.getX();
             y[i] = (int) tmpPoint.getY();
         }
