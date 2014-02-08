@@ -1,5 +1,7 @@
 import java.applet.Applet;
 import java.awt.*;
+import java.awt.event.MouseListener;
+import java.awt.event.MouseMotionListener;
 import java.awt.image.BufferedImage;
 
 /**
@@ -34,5 +36,22 @@ public class applet extends Applet {
     public void removeMouseListeners(DrawableListener dl){
         this.removeMouseMotionListener(dl);
         this.removeMouseListener(dl);
+    }
+
+    public void addMouseListeners(DrawableListener dl) {
+
+        MouseListener[] mouseListeners = this.getMouseListeners();
+        for (MouseListener mouseListener : mouseListeners) {
+            this.removeMouseListener(mouseListener);
+        }
+
+        MouseMotionListener[] mouseMotionListeners = this.getMouseMotionListeners();
+        for (MouseMotionListener mouseListener : mouseMotionListeners) {
+            this.removeMouseMotionListener(mouseListener);
+        }
+
+        this.addMouseMotionListener(dl);
+        this.addMouseListener(dl);
+
     }
 }

@@ -25,7 +25,6 @@ public class PolyDrawListener extends DrawableListener {
             poly = new Poly();
             poly.addPoint(mouseEvent.getPoint());
             drawComplete = false;
-            System.out.println("INSIDE BRACES");
             Main.app.core.addDrawable(poly);
         }
         currentPoint = mouseEvent.getPoint();
