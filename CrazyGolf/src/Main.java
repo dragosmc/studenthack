@@ -86,6 +86,9 @@ public class Main {
 //        app.addMouseListener(dropListener);
 //        app.addMouseMotionListener(dropListener);
 
+        Ball ball = new Ball(new Point (100,100));
+        app.core.addDrawable(ball);
+
         frame.setVisible(true);
         frame.addWindowListener(new WindowListener() {
             @Override

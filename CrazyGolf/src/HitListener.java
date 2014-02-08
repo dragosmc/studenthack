@@ -3,6 +3,7 @@ import com.sun.prism.*;
 import java.awt.*;
 import java.awt.BasicStroke;
 import java.awt.event.MouseEvent;
+import java.awt.geom.Arc2D;
 
 /**
  * Created by Dragos on 08/02/14.
@@ -15,6 +16,7 @@ public class HitListener extends DrawableListener {
 
         public GhostPoint(Point p) {
             ballLocation = p;
+            mouseLocationPoint = new Point((int) p.getX(), (int) p.getY());
         }
 
         @Override
@@ -22,10 +24,10 @@ public class HitListener extends DrawableListener {
             if (mouseLocationPoint == null || ballLocation == null) {
                 return;
             }
-            Stroke s = g.getStroke();
-            g.setStroke(new BasicStroke(1f, BasicStroke.CAP_SQUARE, BasicStroke.JOIN_MITER, 0, new float[]{10, 10}, 0));
+            //Stroke s = g.getStroke();
+            //g.setStroke(new BasicStroke(1f, BasicStroke.CAP_SQUARE, BasicStroke.JOIN_MITER, 0, new float[]{10, 10}, 0));
             g.drawLine(ballLocation.x, ballLocation.y, mouseLocationPoint.x, mouseLocationPoint.y);
-            g.setStroke(s);
+            //g.setStroke(s);
 
         }
     }
@@ -53,8 +55,18 @@ public class HitListener extends DrawableListener {
 
     @Override
     public void mouseClicked(MouseEvent mouseEvent) {
+        setDirectionAndRun(mouseEvent);
         Main.app.core.removeDrawable(ghostPoint);
 
+    }
+
+    private void setDirectionAndRun(MouseEvent mouseEvent) {
+        Vector v = new Vector();
+        double Ballx = ghostPoint.ballLocation.getX();
+        double Bally = ghostPoint.ballLocation.getY();
+        v.setLocation(Ballx, Bally);
+        v.setDir(mouseEvent.getX() - Ballx, mouseEvent.getY() - Bally);
+        //Main.app.core.getPathFinder().run(v);
     }
 
     @Override
