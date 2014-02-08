@@ -33,7 +33,6 @@ public class PolyDrawListener extends DrawableListener {
         pointList = new LinkedList<Point>();
         if (mouseEvent.getClickCount() == 2) {
             Main.app.removeMouseListeners(this);
-
             drawComplete = true;
             poly = null;
 
