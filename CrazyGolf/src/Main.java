@@ -15,16 +15,19 @@ public class Main {
 
         frame = new Frame("Crazy Golf");
         frame.setSize(1000, 600);
+        frame.getInsets().set(0,0,0,0);
         app = new applet();
 
         Panel toolbarPanel = new Panel();
         toolbarPanel.setPreferredSize(new Dimension(1000, 30));
-        toolbarPanel.setBackground(Color.black);
+        toolbarPanel.setBackground(Color.lightGray);
         toolbarPanel.setLayout(new FlowLayout(FlowLayout.LEFT));
+        toolbarPanel.getInsets().set(0,0,0,0);
 
         Panel appletPanel = new Panel();
         appletPanel.setPreferredSize(new Dimension(1000, 540));
-        appletPanel.setBackground(Color.yellow);
+//        appletPanel.setBackground(Color.white);
+        appletPanel.getInsets().set(0,0,0,0);
 
         frame.setLayout(new FlowLayout(FlowLayout.CENTER));
         frame.add(toolbarPanel);

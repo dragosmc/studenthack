@@ -8,6 +8,7 @@ public class Core {
     // Contains a list of primitives
     private List<Primitive> primitiveList;
     private List<Drawable> drawables;
+    private PathFinder pathFinder;
 
     public Core() {
         primitiveList = new LinkedList<Primitive>();
