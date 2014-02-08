@@ -5,7 +5,7 @@ import java.util.List;
  * Created by Adam Bedford on 08/02/14.
  */
 public class PathFinder {
-    private static final int BOUNCES = 10;
+    private static final int BOUNCES = 1;
 
 
     public void run(Vector v) {

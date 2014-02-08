@@ -39,8 +39,7 @@ public class Main {
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
                 PolyDrawListener polyDrawListener = new PolyDrawListener();
-                app.addMouseListener(polyDrawListener);
-                app.addMouseMotionListener(polyDrawListener);
+                app.addMouseListeners(polyDrawListener);
 
             }
         });
@@ -51,8 +50,7 @@ public class Main {
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
                 DropListener dropListener = new DropListener(DropListener.DropType.Rect);
-                app.addMouseListener(dropListener);
-                app.addMouseMotionListener(dropListener);
+                app.addMouseListeners(dropListener);
 
             }
         });
@@ -62,8 +60,7 @@ public class Main {
             @Override
             public void actionPerformed(ActionEvent e) {
                 DropListener dropListener = new DropListener(DropListener.DropType.Triangle);
-                app.addMouseListener(dropListener);
-                app.addMouseMotionListener(dropListener);
+                app.addMouseListeners(dropListener);
             }
         });
 
@@ -73,8 +70,7 @@ public class Main {
             @Override
             public void actionPerformed(ActionEvent e) {
                 DropListener dropListener = new DropListener(DropListener.DropType.Ball);
-                app.addMouseListener(dropListener);
-                app.addMouseMotionListener(dropListener);
+                app.addMouseListeners(dropListener);
             }
         });
 
@@ -84,8 +80,7 @@ public class Main {
             @Override
             public void actionPerformed(ActionEvent e) {
                 DropListener dropListener = new DropListener(DropListener.DropType.Hole);
-                app.addMouseListener(dropListener);
-                app.addMouseMotionListener(dropListener);
+                app.addMouseListeners(dropListener);
             }
         });
 
