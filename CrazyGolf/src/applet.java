@@ -31,6 +31,6 @@ public class applet extends Applet {
 
     public void removeMouseListeners(DrawableListener dl){
         this.removeMouseMotionListener(dl);
-        this.removeMouseListeners(dl);
+        this.removeMouseListener(dl);
     }
 }

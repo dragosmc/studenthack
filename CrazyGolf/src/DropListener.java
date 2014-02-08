@@ -39,7 +39,16 @@ public class DropListener extends DrawableListener {
             }
             break;
             case Triangle: {
+                if (clickCount == 0) {
+                    tmp = new Point(mouseEvent.getX(), mouseEvent.getY());
+                    current = new Rect(mouseEvent.getPoint(), tmp);
+                    Main.app.core.addDrawable((Drawable) current);
+                    clickCount = 1;
+                } else {
+                    Main.app.removeMouseListeners(this);
 
+                    clickCount = 0;
+                }
             }
             break;
             case Ball: {
