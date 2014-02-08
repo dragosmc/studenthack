@@ -45,7 +45,5 @@ public class PolyDrawListener extends DrawableListener {
             Main.app.repaint();
 
         }
-
-
     }
 }
