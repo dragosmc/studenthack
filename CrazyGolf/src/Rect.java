@@ -40,6 +40,7 @@ public class Rect implements Primitive, Dropable, Drawable {
 
             }
 
+            list.add(s);
             list.add(tempList.get(i));
 
         }
