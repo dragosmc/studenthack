@@ -69,6 +69,8 @@ public class Rect implements Primitive, Dropable, Drawable {
 
     @Override
     public void draw(Graphics2D g) {
+        g.fillRect(centre.x - 3, centre.y - 3, 7, 7);
+
         int[] x = new int[4];
         int[] y = new int[4];
 

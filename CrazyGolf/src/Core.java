@@ -9,6 +9,11 @@ public class Core {
     private List<Primitive> primitiveList;
     private List<Drawable> drawables;
 
+    public Core() {
+        primitiveList = new LinkedList<Primitive>();
+        drawables = new LinkedList<Drawable>();
+    }
+
     public List<Collisionable> resolvePrimitive() {
         List<Collisionable> tempList = new LinkedList<Collisionable>();
         for (Primitive primitive : primitiveList) {
@@ -16,6 +21,10 @@ public class Core {
         }
         return tempList;
 
+    }
+
+    public boolean addDrawable(Drawable d) {
+        return drawables.add(d);
     }
 
     public boolean addPrimitive(Primitive p) {

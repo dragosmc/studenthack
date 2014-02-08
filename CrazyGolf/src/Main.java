@@ -48,6 +48,11 @@ public class Main {
         app = new applet();
         appletPanel.add(app);
 
+        Rect rect = new Rect(new Point(100, 100), new Point(150, 150));
+
+        app.core.addDrawable(rect);
+        app.setPreferredSize(new Dimension(1000, 540));
+
         frame.setVisible(true);
     }
 }

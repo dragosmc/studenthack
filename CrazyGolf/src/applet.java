@@ -6,7 +6,7 @@ import java.awt.image.BufferedImage;
  * Created by Adam Bedford on 08/02/14.
  */
 public class applet extends Applet {
-    Core core;
+    public Core core;
 
     public applet(){
         core = new Core();
@@ -20,6 +20,10 @@ public class applet extends Applet {
 
     @Override
     public void paint(Graphics g) {
+        g.setColor(Color.white);
+        g.fillRect(0, 0, getWidth(), getHeight());
+        g.setColor(Color.black);
+
         for (Drawable drawable : core.getDrawables()) {
             drawable.draw((Graphics2D) g);
         }
