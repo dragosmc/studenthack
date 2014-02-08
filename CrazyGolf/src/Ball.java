@@ -19,6 +19,8 @@ public class Ball implements Drawable, Dropable {
     @Override
     public void draw(Graphics2D g) {
 
+       g.fillRect(point.x - 3, point.y - 3, 7, 7);
+
     }
 
     public Point getPoint() {
