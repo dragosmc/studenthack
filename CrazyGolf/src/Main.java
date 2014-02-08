@@ -1,3 +1,6 @@
+import org.lwjgl.LWJGLException;
+import org.lwjgl.opengl.GLContext;
+
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -12,7 +15,6 @@ public class Main {
     public static applet app;
 
     public static void main(String args[]) {
-
         frame = new Frame("Crazy Golf");
         frame.setSize(1000, 600);
         frame.getInsets().set(0, 0, 0, 0);

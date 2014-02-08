@@ -10,9 +10,10 @@ import java.awt.image.BufferedImage;
 public class applet extends Applet {
     public Core core;
 
-    public applet(){
+    public applet() {
         core = new Core();
     }
+
     @Override
     public void update(Graphics g) {
         Image image = createImage(getWidth(), getHeight());
@@ -22,20 +23,24 @@ public class applet extends Applet {
 
     @Override
     public void paint(Graphics g) {
-        ((Graphics2D)g).setRenderingHints(new RenderingHints(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON));
+        ((Graphics2D) g).setRenderingHints(new RenderingHints(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON));
 
         g.setColor(Color.white);
         g.fillRect(0, 0, getWidth(), getHeight());
         g.setColor(Color.black);
 
         for (Drawable drawable : core.getDrawables()) {
-            drawable.draw((Graphics2D) g);
+//            if (drawable instanceof Rect) {
+//                drawable.drawGL();
+//            } else {
+                drawable.draw((Graphics2D) g);
+//            }
         }
 
         core.getPathFinder().draw(g);
     }
 
-    public void removeMouseListeners(DrawableListener dl){
+    public void removeMouseListeners(DrawableListener dl) {
         this.removeMouseMotionListener(dl);
         this.removeMouseListener(dl);
     }

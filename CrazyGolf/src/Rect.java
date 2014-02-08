@@ -1,5 +1,8 @@
+import org.lwjgl.LWJGLException;
 import org.lwjgl.opengl.GL11;
+import org.lwjgl.opengl.GLContext;
 
+import javax.naming.Context;
 import java.awt.*;
 import java.util.LinkedList;
 import java.util.List;
