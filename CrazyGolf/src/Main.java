@@ -57,6 +57,9 @@ public class Main {
             @Override
             public void actionPerformed(ActionEvent e) {
                 //To change body of implemented methods use File | Settings | File Templates.
+                DropListener dropListener = new DropListener(DropListener.DropType.Triangle);
+                app.addMouseListener(dropListener);
+                app.addMouseMotionListener(dropListener);
             }
         })
 
