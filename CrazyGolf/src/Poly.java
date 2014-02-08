@@ -22,6 +22,8 @@ public class Poly implements Primitive {
             } else {
                 s.setDir(x[0] - x[i], y[0] - y[i]);
             }
+
+            list.add(s);
         }
 
     }
