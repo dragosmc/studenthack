@@ -11,23 +11,23 @@ public class Main {
     public static Frame frame;
     public static applet app;
 
-    public static void main(String args[]){
+    public static void main(String args[]) {
 
         frame = new Frame("Crazy Golf");
         frame.setSize(1000, 600);
-        frame.getInsets().set(0,0,0,0);
+        frame.getInsets().set(0, 0, 0, 0);
         app = new applet();
 
         Panel toolbarPanel = new Panel();
         toolbarPanel.setPreferredSize(new Dimension(1000, 30));
         toolbarPanel.setBackground(Color.lightGray);
         toolbarPanel.setLayout(new FlowLayout(FlowLayout.LEFT));
-        toolbarPanel.getInsets().set(0,0,0,0);
+        toolbarPanel.getInsets().set(0, 0, 0, 0);
 
         Panel appletPanel = new Panel();
         appletPanel.setPreferredSize(new Dimension(1000, 540));
 //        appletPanel.setBackground(Color.white);
-        appletPanel.getInsets().set(0,0,0,0);
+        appletPanel.getInsets().set(0, 0, 0, 0);
 
         frame.setLayout(new FlowLayout(FlowLayout.CENTER));
         frame.add(toolbarPanel);
@@ -62,15 +62,32 @@ public class Main {
             @Override
             public void actionPerformed(ActionEvent e) {
                 DropListener dropListener = new DropListener(DropListener.DropType.Triangle);
-                app.addMouseListeners(dropListener);
+                app.addMouseListener(dropListener);
+                app.addMouseMotionListener(dropListener);
             }
-        })
+        });
 
-        ;
         Button setStartPoint = new Button("SetStart");
         toolbarPanel.add(setStartPoint);
+        setStartPoint.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                DropListener dropListener = new DropListener(DropListener.DropType.Ball);
+                app.addMouseListener(dropListener);
+                app.addMouseMotionListener(dropListener);
+            }
+        });
+
         Button setHole = new Button("SetHole");
         toolbarPanel.add(setHole);
+        setHole.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                DropListener dropListener = new DropListener(DropListener.DropType.Hole);
+                app.addMouseListener(dropListener);
+                app.addMouseMotionListener(dropListener);
+            }
+        });
 
         Button setHittingDirection = new Button("Set hitting direction");
         toolbarPanel.add(setHittingDirection);
@@ -90,7 +107,7 @@ public class Main {
 //        app.addMouseListener(dropListener);
 //        app.addMouseMotionListener(dropListener);
 
-        Ball ball = new Ball(new Point (100,100));
+        Ball ball = new Ball(new Point(100, 100));
         app.core.addDrawable(ball);
 
         frame.setVisible(true);

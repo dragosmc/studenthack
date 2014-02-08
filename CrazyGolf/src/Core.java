@@ -40,4 +40,8 @@ public class Core {
     public void removeDrawable(Drawable drawable) {
         drawables.remove(drawable);
     }
+
+    public PathFinder getPathFinder() {
+        return pathFinder;
+    }
 }

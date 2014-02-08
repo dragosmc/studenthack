@@ -66,7 +66,7 @@ public class HitListener extends DrawableListener {
         double Bally = ghostPoint.ballLocation.getY();
         v.setLocation(Ballx, Bally);
         v.setDir(mouseEvent.getX() - Ballx, mouseEvent.getY() - Bally);
-        //Main.app.core.getPathFinder().run(v);
+        Main.app.core.getPathFinder().run(v);
     }
 
     @Override
