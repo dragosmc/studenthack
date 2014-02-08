@@ -30,4 +30,8 @@ public class Segment extends Vector implements Collisionable {
     public Vector bounce(Vector v, double l) {
         return null;
     }
+
+    public String toString(){
+        return String.format("Segment [%f, %f]-[%f, %f]", x, y, dx, dy);
+    }
 }

@@ -3,7 +3,7 @@
  */
 public class dPoint implements Collisionable {
 
-    double x,y;
+    double x, y;
 
     public dPoint(double x, double y) {
         this.x = x;
@@ -26,5 +26,9 @@ public class dPoint implements Collisionable {
 
     public double getX() {
         return x;
+    }
+
+    public String toString() {
+        return String.format("dPoint [%f, %f]", x, y);
     }
 }
