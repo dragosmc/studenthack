@@ -13,6 +13,7 @@ public class Main {
 
         frame = new Frame("Crazy Golf");
         frame.setSize(1000, 600);
+        app = new applet();
 
         Panel toolbarPanel = new Panel();
         toolbarPanel.setPreferredSize(new Dimension(1000, 30));
@@ -32,12 +33,24 @@ public class Main {
         drawPoly.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
+                PolyDrawListener polyDrawListener = new PolyDrawListener();
+                app.addMouseListener(polyDrawListener);
+                app.addMouseMotionListener(polyDrawListener);
 
             }
         });
 
         Button drawSquare = new Button("DrawSquare");
         toolbarPanel.add(drawSquare);
+        drawSquare.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent actionEvent) {
+                DropListener dropListener = new DropListener(DropListener.DropType.Rect);
+                app.addMouseListener(dropListener);
+                app.addMouseMotionListener(dropListener);
+
+            }
+        });
         Button drawTriangle = new Button("DrawTriangle");
         toolbarPanel.add(drawTriangle);
         drawTriangle.addActionListener(new ActionListener() {
@@ -53,16 +66,16 @@ public class Main {
         Button setHole = new Button("SetHole");
         toolbarPanel.add(setHole);
 
-        app = new applet();
+
         appletPanel.add(app);
 
-        Rect rect = new Rect(new Point(100, 100), new Point(150, 150));
+        //Rect rect = new Rect(new Point(100, 100), new Point(150, 150));
 
-        app.core.addDrawable(rect);
+        //app.core.addDrawable(rect);
         app.setPreferredSize(new Dimension(1000, 540));
-        DrawableListener dropListener = new PolyDrawListener();//new DropListener(DropListener.DropType.Rect);
-        app.addMouseListener(dropListener);
-        app.addMouseMotionListener(dropListener);
+//        DrawableListener dropListener = new PolyDrawListener();//new DropListener(DropListener.DropType.Rect);
+//        app.addMouseListener(dropListener);
+//        app.addMouseMotionListener(dropListener);
 
         frame.setVisible(true);
     }
