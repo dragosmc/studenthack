@@ -1,24 +1,25 @@
 import java.awt.*;
+import java.util.LinkedList;
 import java.util.List;
 
 /**
  * Created by Adam Bedford on 08/02/14.
  */
 public class Poly implements Primitive, Drawable {
-    public int n; //number of points in the polygon
     public int x[]; //x coordinates
     public int y[]; //y coordinates
+    private List<Point> pointList = new LinkedList<Point>();
 
     @Override
     public void resolve(List<Collisionable> list) {
-        for (int i = 0; i < n; i++) {
+        for (int i = 0; i < pointList.size(); i++) {
             list.add(new dPoint(x[i], y[i]));
         }
 
-        for (int i = 0; i < n; i++) {
+        for (int i = 0; i < pointList.size(); i++) {
             Segment s = new Segment();
             s.setLocation(x[i], y[i]);
-            if (i < n - 1) {
+            if (i < pointList.size() - 1) {
                 s.setDir(x[i + 1] - x[i], y[i + 1] - y[i]);
             } else {
                 s.setDir(x[0] - x[i], y[0] - y[i]);
@@ -31,7 +32,21 @@ public class Poly implements Primitive, Drawable {
 
     @Override
     public void draw(Graphics2D g) {
-        g.drawPolygon(x,y,n);
+        x = new int[pointList.size()];
+        y = new int[pointList.size()];
+        int i=0;
+        for (Point point : pointList) {
+            x[i] = (int)point.getX();
+            y[i] = (int)point.getY();
+            i++;
+        }
+
+        g.drawPolygon(x, y, pointList.size());
+
+    }
+
+    public boolean addPoint(Point p) {
+        return pointList.add(p);
 
     }
 }

@@ -52,7 +52,7 @@ public class Main {
 
         app.core.addDrawable(rect);
         app.setPreferredSize(new Dimension(1000, 540));
-        DropListener dropListener = new DropListener(DropListener.DropType.Rect);
+        DrawableListener dropListener = new PolyDrawListener();//new DropListener(DropListener.DropType.Rect);
         app.addMouseListener(dropListener);
         app.addMouseMotionListener(dropListener);
 
