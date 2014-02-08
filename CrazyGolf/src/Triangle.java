@@ -11,4 +11,9 @@ public class Triangle implements Primitive {
     @Override
     public void resolve(List<Collisionable> list) {
     }
+
+    @Override
+    public void draw(Graphics2D g) {
+
+    }
 }

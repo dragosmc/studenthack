@@ -31,6 +31,7 @@ public class Poly implements Primitive, Drawable {
 
     @Override
     public void draw(Graphics2D g) {
+        g.drawPolygon(x,y,n);
 
     }
 }
