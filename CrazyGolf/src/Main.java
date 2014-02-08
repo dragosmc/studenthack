@@ -1,8 +1,6 @@
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.WindowEvent;
-import java.awt.event.WindowListener;
 
 /**
  * Created by Adam Bedford on 08/02/14.
@@ -36,7 +34,8 @@ public class Main {
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
                 PolyDrawListener polyDrawListener = new PolyDrawListener();
-                app.addMouseListeners(polyDrawListener);
+                app.addMouseListener(polyDrawListener);
+                app.addMouseMotionListener(polyDrawListener);
 
             }
         });
@@ -47,7 +46,8 @@ public class Main {
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
                 DropListener dropListener = new DropListener(DropListener.DropType.Rect);
-                app.addMouseListeners(dropListener);
+                app.addMouseListener(dropListener);
+                app.addMouseMotionListener(dropListener);
 
             }
         });
@@ -56,8 +56,7 @@ public class Main {
         drawTriangle.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                DropListener dropListener = new DropListener(DropListener.DropType.Triangle);
-                app.addMouseListeners(dropListener);
+                //To change body of implemented methods use File | Settings | File Templates.
             }
         })
 
@@ -79,43 +78,5 @@ public class Main {
 //        app.addMouseMotionListener(dropListener);
 
         frame.setVisible(true);
-        frame.addWindowListener(new WindowListener() {
-            @Override
-            public void windowOpened(WindowEvent e) {
-
-            }
-
-            @Override
-            public void windowClosing(WindowEvent e) {
-                e.getWindow().setVisible(false);
-                System.exit(0);
-
-            }
-
-            @Override
-            public void windowClosed(WindowEvent e) {
-
-            }
-
-            @Override
-            public void windowIconified(WindowEvent e) {
-
-            }
-
-            @Override
-            public void windowDeiconified(WindowEvent e) {
-
-            }
-
-            @Override
-            public void windowActivated(WindowEvent e) {
-
-            }
-
-            @Override
-            public void windowDeactivated(WindowEvent e) {
-
-            }
-        });
     }
 }

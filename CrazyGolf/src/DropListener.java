@@ -52,13 +52,34 @@ public class DropListener extends DrawableListener {
             }
             break;
             case Ball: {
+                if (clickCount == 0) {
+                    tmp = new Point(mouseEvent.getX(), mouseEvent.getY());
+                    current = new Ball(mouseEvent.getPoint());
+                    Main.app.core.addDrawable((Drawable) current);
+                    clickCount = 1;
+                } else {
+                    Main.app.removeMouseListener(this);
+
+                    clickCount = 0;
+
+                }
 
             }
             break;
             case Hole: {
+                if (clickCount == 0) {
+                    tmp = new Point(mouseEvent.getX(), mouseEvent.getY());
+                    current = new Hole(mouseEvent.getPoint());
+                    Main.app.core.addDrawable((Drawable) current);
+                    clickCount = 1;
+                } else {
+                    Main.app.removeMouseListener(this);
 
+                    clickCount = 0;
+
+                }
+                break;
             }
-            break;
         }
     }
 
