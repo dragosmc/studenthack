@@ -24,19 +24,19 @@ public class Rect implements Primitive, Dropable, Drawable {
     @Override
     public void resolve(List<Collisionable> list) {
         List<dPoint> tempList = new LinkedList<dPoint>();
-        for (int i = 0; i < 3; i++) {
+        for (int i = 0; i <=3; i++) {
             tempList.add(getPoint(x[i], y[i]));
         }
 
-        for (int i = 0; i < 3; i++) {
+        for (int i = 0; i <=3; i++) {
             Segment s = new Segment();
             s.setLocation(tempList.get(i).getX(), tempList.get(i).getY());
             if (i < 2) {
                 s.setDir(tempList.get(i + 1).getX() - tempList.get(i).getX(),
                         tempList.get(i + 1).getY() - tempList.get(i).getY());
             } else {
-                s.setDir(tempList.get(0).getX() - tempList.get(i).getX(),
-                        tempList.get(0).getY() - tempList.get(i).getY());
+                s.setDir(tempList.get(i).getX() - tempList.get(0).getX(),
+                        tempList.get(i).getY() - tempList.get(0).getY());
 
             }
 
@@ -77,7 +77,7 @@ public class Rect implements Primitive, Dropable, Drawable {
         int[] x = new int[4];
         int[] y = new int[4];
 
-        for (int i = 0; i < 3; i++) {
+        for (int i = 0; i <=3; i++) {
             dPoint tmpPoint = getPoint(Rect.x[i], Rect.y[i]);
             x[i] = (int) tmpPoint.getX();
             y[i] = (int) tmpPoint.getY();
