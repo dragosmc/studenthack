@@ -54,9 +54,33 @@ public class Triangle implements Primitive, Drawable, Dropable {
 
 
     }
+    private dPoint getPoint(double templateX, double templateY) {
+        double Ax = centre.getX();
+        double ABx = corner.getX() - Ax;
+        double Ay = centre.getY();
+        double ABy = corner.getY() - Ay;
+
+        double Nx = templateX * ABx - templateY * ABy + Ax;
+        double Ny = templateX * ABy + templateY * ABx + Ay;
+        return new dPoint(Nx, Ny);
+    }
 
     @Override
     public void draw(Graphics2D g) {
+
+        g.fillRect(centre.x - 3, centre.y - 3, 7, 7);
+
+        int[] x = new int[4];
+        int[] y = new int[4];
+
+        for (int i = 0; i <3; i++) {
+            dPoint tmpPoint = getPoint(template.get(i).getX(), template.get(i).getY());
+            x[i] = (int) tmpPoint.getX();
+            y[i] = (int) tmpPoint.getY();
+        }
+
+        g.drawPolygon(x, y, 3);
+
 
     }
 
