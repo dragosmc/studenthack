@@ -10,7 +10,10 @@ public class Triangle implements Primitive, Drawable, Dropable {
     private Point corner;
     private final ArrayList<dPoint> template =  new ArrayList<dPoint>();
 
-    public Triangle() {
+    public Triangle(Point mid, Point corn ) {
+        centre = mid;
+        corner = corn;
+
         template.add(new dPoint(-1,0));
         template.add(new dPoint(1,0));
         template.add(new dPoint(0,1));

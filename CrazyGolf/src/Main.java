@@ -40,6 +40,14 @@ public class Main {
         toolbarPanel.add(drawSquare);
         Button drawTriangle = new Button("DrawTriangle");
         toolbarPanel.add(drawTriangle);
+        drawTriangle.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                //To change body of implemented methods use File | Settings | File Templates.
+            }
+        })
+
+        ;
         Button setStartPoint = new Button("SetStart");
         toolbarPanel.add(setStartPoint);
         Button setHole = new Button("SetHole");
