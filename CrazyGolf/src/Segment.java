@@ -1,7 +1,7 @@
 /**
  * Created by Adam Bedford on 08/02/14.
  */
-public class Segment implements Collisionable {
+public class Segment extends Vector implements Collisionable {
     @Override
     public double collidesAfter(Vector v) {
         return 0;
