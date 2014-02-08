@@ -88,6 +88,11 @@ public class Triangle implements Primitive, Drawable, Dropable {
     }
 
     @Override
+    public void drawGL() {
+
+    }
+
+    @Override
     public void update() {
 
     }

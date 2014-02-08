@@ -19,7 +19,7 @@ public class Segment extends Vector implements Collisionable {
         double beta = -(uDx * qY - uDy * qX) / det;
         double alpha = (vDy * qX - vDx * qY) / det;
 
-        System.out.println(String.format("%f, %f", alpha, beta));
+//        System.out.println(String.format("%f, %f", alpha, beta));
 
         if (beta < 0 || beta > 1 || alpha < 0) return Double.NaN;
 

@@ -45,6 +45,11 @@ public class Poly implements Primitive, Drawable {
 
     }
 
+    @Override
+    public void drawGL() {
+
+    }
+
     public boolean addPoint(Point p) {
         return pointList.add(p);
 

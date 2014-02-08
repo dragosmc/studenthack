@@ -21,4 +21,9 @@ public class Hole implements Drawable, Dropable {
         g.fillRect(point.x - 3, point.y - 3, 7, 7);
 
     }
+
+    @Override
+    public void drawGL() {
+
+    }
 }

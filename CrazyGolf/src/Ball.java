@@ -23,6 +23,11 @@ public class Ball implements Drawable, Dropable {
 
     }
 
+    @Override
+    public void drawGL() {
+
+    }
+
     public Point getPoint() {
         return point;
     }

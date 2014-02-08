@@ -30,6 +30,11 @@ public class HitListener extends DrawableListener {
             //g.setStroke(s);
 
         }
+
+        @Override
+        public void drawGL() {
+
+        }
     }
 
     Ball theBall = null;

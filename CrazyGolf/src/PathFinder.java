@@ -8,6 +8,7 @@ import java.util.List;
 public class PathFinder {
     private static final int BOUNCES = 10;
     private List<Vector> vectors;
+    private Collisionable previous = null;
 
     public PathFinder() {
         vectors = new LinkedList<Vector>();
@@ -31,8 +32,8 @@ public class PathFinder {
             if (tmpVec != null) {
                 vectors.add(tmpVec);
                 tmpVec = _run(tmpVec, collisions);
-            } else
-                System.out.println("No Collisions");
+            } //else
+//                System.out.println("No Collisions");
         }
     }
 
@@ -49,21 +50,23 @@ public class PathFinder {
         double distance = Double.POSITIVE_INFINITY;
         Collisionable C = null;
 
-        for (Collisionable collision : collisions) {
-            double d;
-            if ((d = collision.collidesAfter(v)) != Double.NaN) {
-                System.out.println("Distance: " +d+","+distance);
-                if (d < distance) {
-                    distance = d;
-                    C = collision;
+        for (Collisionable collision : collisions)
+            if (collision != previous) {
+                double d;
+                if ((d = collision.collidesAfter(v)) != Double.NaN) {
+//                    System.out.println("Distance: " + d + "," + distance);
+                    if (d < distance) {
+                        distance = d;
+                        C = collision;
+                    }
+                } else {
+//                    System.out.println("NaN");
                 }
-            } else {
-                System.out.println("NaN");
             }
-        }
 
+        previous = C;
         if (C != null) {
-            System.out.println(String.format("Distance: %f", distance));
+//            System.out.println(String.format("Distance: %f", distance));
             v.setDir(v.dx * distance, v.dy * distance);
             return C.bounce(v, 1);
         }
@@ -75,7 +78,7 @@ public class PathFinder {
         Color c = g.getColor();
         g.setColor(Color.blue);
         for (Vector vector : vectors) {
-            g.drawLine((int)vector.x, (int)vector.y, (int)vector.x + (int)vector.dx, (int)vector.y + (int)vector.dy);
+            g.drawLine((int) vector.x, (int) vector.y, (int) vector.x + (int) vector.dx, (int) vector.y + (int) vector.dy);
         }
         g.setColor(c);
     }
