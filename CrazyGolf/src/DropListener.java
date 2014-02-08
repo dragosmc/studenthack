@@ -9,9 +9,12 @@ import java.awt.event.MouseMotionListener;
 public class DropListener extends DrawableListener {
     private DropType dropType;
     private Dropable current;
+    private int clickCount;
+    private Point tmp;
 
     public DropListener(DropType d) {
         dropType = d;
+        clickCount = 0;
     }
 
     @Override
@@ -23,7 +26,16 @@ public class DropListener extends DrawableListener {
     public void mouseClicked(MouseEvent mouseEvent) {
         switch (dropType) {
             case Rect: {
-
+                if (clickCount == 0) {
+                    tmp = new Point(mouseEvent.getX(), mouseEvent.getY());
+                    current = new Rect(mouseEvent.getPoint(), tmp);
+                    Main.app.core.addDrawable((Drawable) current);
+                    clickCount = 1;
+                } else {
+//                        Main.app.removeMouseListener(this);
+//                        Main.app.removeMouseMotionListener(this);
+                    clickCount = 0;
+                }
             }
             break;
             case Triangle: {
@@ -32,16 +44,21 @@ public class DropListener extends DrawableListener {
             break;
             case Ball: {
 
-            } break;
+            }
+            break;
             case Hole: {
 
-            }break;
+            }
+            break;
         }
     }
 
     @Override
     public void mouseMoved(MouseEvent mouseEvent) {
-
+        if (clickCount > 0) {
+            tmp.setLocation(mouseEvent.getX(), mouseEvent.getY());
+            Main.app.repaint();
+        }
     }
 
     public enum DropType {
