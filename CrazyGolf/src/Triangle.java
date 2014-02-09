@@ -8,14 +8,14 @@ import java.util.List;
 public class Triangle implements Primitive, Drawable, Dropable {
     private Point centre;
     private Point corner;
-    private final ArrayList<dPoint> template =  new ArrayList<dPoint>();
+    private ArrayList<dPoint> template =  new ArrayList<dPoint>();
 
     public Triangle(Point mid, Point corn ) {
         centre = mid;
         corner = corn;
 
-        template.add(new dPoint(0,-0.577));
         template.add(new dPoint(0,0.577));
+        template.add(new dPoint(0,-0.577));
         template.add(new dPoint(1,0));
     }
 
@@ -35,20 +35,21 @@ public class Triangle implements Primitive, Drawable, Dropable {
         centreVector.setLocation(centre.getX(), centre.getY());
 
         for (dPoint i : template) {
-            double x = i.getX() * centreVector.getDir().getX() - i.getY() * centreVector.getDir().getY() + centre.getX();
-            double y = i.getX() * centreVector.getDir().getX() + i.getY() * centreVector.getDir().getY() + centre.getY();
 
+            dPoint tempDpoint = getPoint(i.getX(),i.getY());
 
-            list.add(new dPoint(x, y));
-            tempList.add(new dPoint(x, y));
+            list.add(tempDpoint);
+            tempList.add(tempDpoint);
         }
         for (int i = 0; i < 3; i++) {
             Segment tempSegment = new Segment();
             tempSegment.setLocation(tempList.get(i).getX(), tempList.get(i).getY());
-            if (i != 2) {
-                tempSegment.setDir(tempSegment.getX() - tempList.get(i + 1).getX(), tempSegment.getY() - tempList.get(i + 1).getY());
+            if (i < 2) {
+                tempSegment.setDir(tempList.get(i + 1).getX() -tempList.get(i).getX(),
+                                   tempList.get(i + 1).getY() - tempList.get(i).getY());
             } else {
-                tempSegment.setDir(tempSegment.getX() - tempList.get(0).getX(), tempSegment.getY() - tempList.get(0).getY());
+                tempSegment.setDir(tempList.get(0).getX() - tempList.get(i).getX() ,
+                                   tempList.get(0).getY() - tempList.get(i).getY() );
             }
             list.add(tempSegment);
 
@@ -76,7 +77,7 @@ public class Triangle implements Primitive, Drawable, Dropable {
         int[] x = new int[4];
         int[] y = new int[4];
 
-        for (int i = 0; i <3; i++) {
+        for (int i = 0; i < 3; i++) {
             dPoint tmpPoint = getPoint(template.get(i).getX(), template.get(i).getY());
             x[i] = (int) tmpPoint.getX();
             y[i] = (int) tmpPoint.getY();

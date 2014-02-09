@@ -12,6 +12,7 @@ public class applet extends Applet {
 
     public applet() {
         core = new Core();
+
     }
 
     @Override
