@@ -45,7 +45,7 @@ public class DropListener extends DrawableListener {
             }
             break;
             case Ball: {
-                if (clickCount == 0) {
+                if (clickCount == 0 && !hasBall()) {
                     tmp = new Point(mouseEvent.getX(), mouseEvent.getY());
                     current = new Ball(mouseEvent.getPoint());
                     Main.app.core.addDrawable((Drawable) current);
@@ -67,13 +67,19 @@ public class DropListener extends DrawableListener {
                     clickCount = 1;
                 } else {
                     Main.app.removeMouseListener(this);
-
                     clickCount = 0;
-
                 }
                 break;
             }
         }
+    }
+
+    private boolean hasBall() {
+        for (Drawable drawable : Main.app.core.getDrawables()) {
+            if (drawable instanceof Ball)
+                return true;
+        }
+        return false;
     }
 
     @Override

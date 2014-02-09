@@ -21,7 +21,7 @@ public class Main {
         final Panel toolbarPanel = new Panel();
         toolbarPanel.setPreferredSize(new Dimension(1000, 30));
         toolbarPanel.setBackground(Color.lightGray);
-        toolbarPanel.setLayout(new FlowLayout(FlowLayout.LEFT));
+        toolbarPanel.setLayout(new FlowLayout(FlowLayout.CENTER));
         toolbarPanel.getInsets().set(0, 0, 0, 0);
 
         Panel appletPanel = new Panel();
@@ -108,11 +108,88 @@ public class Main {
         changeBounce.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                final Dialog dialog = new Dialog(frame);
+                dialog.setTitle("Giff me bounces");
+                dialog.setBackground(Color.WHITE);
+                dialog.setPreferredSize(new Dimension(200, 100));
+                dialog.setLocation(500, 270);
+                dialog.setSize(new Dimension(200, 100));
+
+                Panel buttonPanel = new Panel();
+                buttonPanel.setPreferredSize(new Dimension(200, 100));
+                buttonPanel.setBackground(Color.LIGHT_GRAY);
+                buttonPanel.setLayout(new FlowLayout(FlowLayout.CENTER));
+
+                final TextField textField = new TextField("10");
+                textField.setText("10");
+                textField.setVisible(true);
+
+                Label label = new Label("Giff me bounces");
+                label.setText("What do you say ?");
+                label.setVisible(true);
+
+                buttonPanel.add(label);
+                buttonPanel.add(textField);
+
+                Button okButton = new Button("OK");
+                okButton.setVisible(true);
+                okButton.addActionListener(new ActionListener() {
+                    @Override
+                    public void actionPerformed(ActionEvent e) {
+                        try {
+                            int numberOfBounces = Integer.parseInt(textField.getText());
+                            Main.app.core.getPathFinder().setBounces(numberOfBounces);
+                            dialog.dispose();
+                        } catch (Exception ignored) {
+                        }
+                    }
+                });
+                buttonPanel.add(okButton);
+                dialog.addWindowListener(new WindowListener() {
+                    @Override
+                    public void windowOpened(WindowEvent e) {
+
+                    }
+
+                    @Override
+                    public void windowClosing(WindowEvent e) {
+                        dialog.dispose();
+
+                    }
+
+                    @Override
+                    public void windowClosed(WindowEvent e) {
+
+                    }
+
+                    @Override
+                    public void windowIconified(WindowEvent e) {
+
+                    }
+
+                    @Override
+                    public void windowDeiconified(WindowEvent e) {
+
+                    }
+
+                    @Override
+                    public void windowActivated(WindowEvent e) {
+
+                    }
+
+                    @Override
+                    public void windowDeactivated(WindowEvent e) {
+
+                    }
+                });
+                dialog.add(buttonPanel);
+                dialog.setVisible(true);
 
             }
         });
 
         bounces = new Label("Bounces");
+        bounces.setPreferredSize(new Dimension(100, 20));
         bounces.setVisible(true);
         bounces.setText("Bounces: 0");
         toolbarPanel.add(bounces);

@@ -6,7 +6,7 @@ import java.util.List;
  * Created by Adam Bedford on 08/02/14.
  */
 public class PathFinder {
-    private static final int BOUNCES = 15;
+    private static int BOUNCES = 15;
     private List<Vector> vectors;
     private Collisionable previous = null;
     private int count;
@@ -83,5 +83,9 @@ public class PathFinder {
 
     public int getBounces() {
         return BOUNCES - count - 1;
+    }
+
+    public void setBounces(int bounces) {
+        BOUNCES = bounces;
     }
 }
