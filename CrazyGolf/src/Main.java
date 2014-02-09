@@ -3,6 +3,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
+import java.util.List;
 
 /**
  * Created by Adam Bedford on 08/02/14.
@@ -204,11 +205,25 @@ public class Main {
         play.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+              List<Drawable> list =  Main.app.core.getDrawables();
+                boolean startPresent = false;
+                boolean endPresent = false;
+                for(Drawable d : list){
+                    if (d instanceof Ball){
+                         startPresent = true;
+                    }
+                    if(d instanceof Hole) {
+                        endPresent = true;
+                }
+
+
+               if(startPresent && endPresent){
                 toolbarPanel.setVisible(false);
                 app.addMouseListeners(new HitListener());
+               }
 
             }
-        });
+        }});
 
 
         appletPanel.add(app);
