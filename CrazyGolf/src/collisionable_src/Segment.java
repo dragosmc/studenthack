@@ -1,3 +1,7 @@
+package collisionable_src;
+
+import interface_src.Collisionable;
+
 /**
  * Created by Adam Bedford on 08/02/14.
  */
@@ -47,7 +51,7 @@ public class Segment extends Vector implements Collisionable {
     }
 
     public String toString() {
-        return String.format("Segment [%f, %f]-[%f, %f]", x, y, dx, dy);
+        return String.format("collisionable_src.Segment [%f, %f]-[%f, %f]", x, y, dx, dy);
     }
 
 

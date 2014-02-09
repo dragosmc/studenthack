@@ -1,3 +1,7 @@
+import interface_src.Collisionable;
+import interface_src.Drawable;
+import interface_src.Primitive;
+
 import java.util.LinkedList;
 import java.util.List;
 

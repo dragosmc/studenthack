@@ -1,3 +1,7 @@
+package interface_src;
+
+import collisionable_src.Vector;
+
 /**
  * Created by Adam Bedford on 08/02/14.
  */

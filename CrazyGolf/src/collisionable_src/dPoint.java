@@ -1,3 +1,7 @@
+package collisionable_src;
+
+import interface_src.Collisionable;
+
 /**
  * Created by Adam Bedford on 08/02/14.
  */
@@ -37,7 +41,7 @@ public class dPoint implements Collisionable {
     }
 
     public String toString() {
-        return String.format("dPoint [%f, %f]", x, y);
+        return String.format("collisionable_src.dPoint [%f, %f]", x, y);
     }
 
 }

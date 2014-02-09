@@ -1,8 +1,9 @@
-import java.applet.Applet;
+import interface_src.Drawable;
+import listener_src.DrawableListener;
+
 import java.awt.*;
 import java.awt.event.MouseListener;
 import java.awt.event.MouseMotionListener;
-import java.awt.image.BufferedImage;
 
 /**
  * Created by Adam Bedford on 08/02/14.
@@ -31,7 +32,7 @@ public class CrazyApplet extends java.applet.Applet {
         g.setColor(Color.black);
 
         for (Drawable drawable : core.getDrawables()) {
-//            if (drawable instanceof Rect) {
+//            if (drawable instanceof drawable_src.Rect) {
 //                drawable.drawGL();
 //            } else {
                 drawable.draw((Graphics2D) g);

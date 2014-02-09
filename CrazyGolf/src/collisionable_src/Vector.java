@@ -1,3 +1,5 @@
+package collisionable_src;
+
 /**
  * Created by Adam Bedford on 08/02/14.
  */
@@ -31,5 +33,13 @@ public class Vector {
     }
     public dPoint getDir(){
         return new dPoint(dx,dy);
+    }
+
+    public double getDx() {
+        return dx;
+    }
+
+    public double getDy() {
+        return dy;
     }
 }

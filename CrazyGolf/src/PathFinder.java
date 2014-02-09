@@ -1,3 +1,9 @@
+import collisionable_src.Segment;
+import collisionable_src.Vector;
+import interface_src.Collisionable;
+import interface_src.Drawable;
+import interface_src.Primitive;
+
 import java.awt.*;
 import java.util.LinkedList;
 import java.util.List;
@@ -60,7 +66,7 @@ public class PathFinder {
         }
         previous = C;
         if (C != null) {
-            v.setDir(v.dx * distance, v.dy * distance);
+            v.setDir(v.getDx() * distance, v.getDy() * distance);
             if (C instanceof Segment && ((Segment) C).isEndPoint()) {
                 return null;
             }
@@ -75,7 +81,8 @@ public class PathFinder {
         g.setColor(Color.blue);
         g.setStroke(new BasicStroke(1f, BasicStroke.CAP_SQUARE, BasicStroke.JOIN_MITER, 2, new float[]{10, 10}, 0));
         for (Vector vector : vectors) {
-            g.drawLine((int) vector.x, (int) vector.y, (int) vector.x + (int) vector.dx, (int) vector.y + (int) vector.dy);
+            g.drawLine((int) vector.getX(), (int) vector.getY(), (int) vector.getX() + (int) vector.getDx(),
+                    (int) vector.getY() + (int) vector.getDy());
         }
         g.setColor(c);
         g.setStroke(s);
