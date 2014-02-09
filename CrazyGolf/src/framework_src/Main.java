@@ -231,7 +231,7 @@ public class Main {
                     //}
                     if (startPresent && endPresent) {
                         toolbarPanel.setVisible(false);
-                        Main.app.core.getPathFinder().setDraw(true);
+                        Main.app.core.getPathFinder().setDraw(false);
                         HitListener hitListener = new HitListener();
                         app.addMouseListeners(hitListener);
                     }

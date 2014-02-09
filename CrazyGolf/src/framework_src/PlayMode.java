@@ -41,6 +41,7 @@ public class PlayMode implements Runnable {
         Vector v = null;
         ListIterator<Vector> iterator = vectorList.listIterator();
         while (isRunning) {
+            Main.app.repaint();
             if (offset > 1) {
                 if (iterator.hasNext()) {
                     offset = 0;
@@ -58,6 +59,7 @@ public class PlayMode implements Runnable {
 
 
             ball.setLocation(xBall, yBall);
+
             ball.draw((Graphics2D)Main.app.getGraphics());
 
             currentTick += skipTicks;
@@ -65,7 +67,9 @@ public class PlayMode implements Runnable {
             if (sleepTime >= 0) {
                 try {
                     Thread.sleep(sleepTime);
+                    Main.app.paint(Main.app.getGraphics());
                 } catch (InterruptedException e) {
+
                     e.printStackTrace();
                 }
             }
