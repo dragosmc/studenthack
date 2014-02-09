@@ -15,6 +15,7 @@ public class dPoint implements Collisionable {
         return Double.NaN;
     }
 
+
     @Override
     public Vector bounce(Vector v, double l) {
         if (endPoint) {
@@ -23,6 +24,7 @@ public class dPoint implements Collisionable {
             vector.setDir(0,0);
             return vector;
         }
+
         return null;
     }
 

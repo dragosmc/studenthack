@@ -29,7 +29,7 @@ public class Vector {
         this.dx = dx;
         this.dy = dy;
     }
-    public DPoint getDir(){
-        return new DPoint(dx,dy);
+    public dPoint getDir(){
+        return new dPoint(dx,dy);
     }
 }

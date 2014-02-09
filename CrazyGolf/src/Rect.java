@@ -26,7 +26,7 @@ public class Rect implements Primitive, Dropable, Drawable {
 
     @Override
     public void resolve(List<Collisionable> list) {
-        List<DPoint> tempList = new LinkedList<DPoint>();
+        List<dPoint> tempList = new LinkedList<dPoint>();
         for (int i = 0; i <= 3; i++) {
             tempList.add(getPoint(x[i], y[i]));
         }
@@ -51,7 +51,7 @@ public class Rect implements Primitive, Dropable, Drawable {
         }
     }
 
-    private DPoint getPoint(double templateX, double templateY) {
+    private dPoint getPoint(double templateX, double templateY) {
         double Ax = centre.getX();
         double ABx = midPoint.getX() - Ax;
         double Ay = centre.getY();
@@ -59,7 +59,7 @@ public class Rect implements Primitive, Dropable, Drawable {
 
         double Nx = templateX * ABx - templateY * ABy + Ax;
         double Ny = templateX * ABy + templateY * ABx + Ay;
-        return new DPoint(Nx, Ny);
+        return new dPoint(Nx, Ny);
     }
 
     public Point getCentre() {
@@ -83,7 +83,7 @@ public class Rect implements Primitive, Dropable, Drawable {
         int[] y = new int[4];
 
         for (int i = 0; i <= 3; i++) {
-            DPoint tmpPoint = getPoint(Rect.x[i], Rect.y[i]);
+            dPoint tmpPoint = getPoint(Rect.x[i], Rect.y[i]);
             x[i] = (int) tmpPoint.getX();
             y[i] = (int) tmpPoint.getY();
         }
@@ -95,7 +95,7 @@ public class Rect implements Primitive, Dropable, Drawable {
     @Override
     public void drawGL() {
         GL11.glBegin(GL11.GL_QUADS);
-        DPoint dp[] = new DPoint[4];
+        dPoint dp[] = new dPoint[4];
         for(int i = 0; i <= 3; i++){
             dp[i] = getPoint(Rect.x[i], Rect.y[i]);
         }
