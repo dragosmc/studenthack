@@ -51,8 +51,8 @@ public class PlayMode implements Runnable {
                 }
             }
 
-            double xBall = v.getDy() * offset;
-            double yBall = v.getDx() * offset;
+            double xBall = v.getX() + v.getDx() * offset;
+            double yBall = v.getY() + v.getDy() * offset;
 
             offset+=0.1;
 
