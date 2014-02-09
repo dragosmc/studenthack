@@ -29,7 +29,7 @@ public class OpenGLDisplay {
             drawableList = new LinkedList<Drawable>();
 
             drawableList.add(new Rect(new Point(0, 0), new Point(50, 50)));
-            drawableList.add(new Rect(new Point(25, 25), new Point(50, 50)));
+            drawableList.add(new Rect(new Point(0, 50), new Point(75, 75)));
         } else {
             drawableList = drawables;
         }
