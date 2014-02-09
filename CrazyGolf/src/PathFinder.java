@@ -6,7 +6,7 @@ import java.util.List;
  * Created by Adam Bedford on 08/02/14.
  */
 public class PathFinder {
-    private static final int BOUNCES = 100;
+    private static final int BOUNCES = 10;
     private List<Vector> vectors;
     private Collisionable previous = null;
 
@@ -67,6 +67,10 @@ public class PathFinder {
         previous = C;
         if (C != null) {
 //            System.out.println(String.format("Distance: %f", distance));
+//            if (C instanceof Segment && ((Segment)C).isEndPoint()) {
+//                System.out.println("HIT THE HOLE");
+//                return null;
+//            }
             v.setDir(v.dx * distance, v.dy * distance);
             return C.bounce(v, 1);
         }

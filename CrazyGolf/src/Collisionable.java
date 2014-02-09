@@ -4,4 +4,6 @@
 public interface Collisionable {
     public double collidesAfter(Vector v);
     public Vector bounce(Vector v, double l);
+
+
 }

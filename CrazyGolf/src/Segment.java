@@ -2,6 +2,8 @@
  * Created by Adam Bedford on 08/02/14.
  */
 public class Segment extends Vector implements Collisionable {
+    private boolean endPoint = false;
+
     @Override
     public double collidesAfter(Vector v) {
         double qX = v.getX() - x;
@@ -46,5 +48,14 @@ public class Segment extends Vector implements Collisionable {
 
     public String toString() {
         return String.format("Segment [%f, %f]-[%f, %f]", x, y, dx, dy);
+    }
+
+
+    public void setEndPoint() {
+        endPoint = true;
+    }
+
+    public boolean isEndPoint(){
+        return endPoint;
     }
 }

@@ -16,6 +16,7 @@ public class Rect implements Primitive, Dropable, Drawable {
 
     private static final double x[] = {1, -1, -1, 1};
     private static final double y[] = {1, 1, -1, -1};
+    private boolean endPoint = false;
 
     //Nx = xABx - yAB + Ax
     //Ny = xABy + yABx + Ay
@@ -44,7 +45,9 @@ public class Rect implements Primitive, Dropable, Drawable {
                         tempList.get(0).getY() - tempList.get(i).getY());
 
             }
-
+            if (endPoint) {
+                s.setEndPoint();
+            }
             list.add(s);
             list.add(tempList.get(i));
 
@@ -122,4 +125,14 @@ public class Rect implements Primitive, Dropable, Drawable {
 
         GL11.glEnd();
     }
+
+
+    public void setEndPoint() {
+        endPoint = true;
+    }
+
+    public boolean isEndPoint(){
+        return endPoint;
+    }
+
 }
