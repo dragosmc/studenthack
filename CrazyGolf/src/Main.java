@@ -6,6 +6,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
+import java.util.List;
 
 /**
  * Created by Adam Bedford on 08/02/14.
@@ -28,7 +29,6 @@ public class Main {
 
         Panel appletPanel = new Panel();
         appletPanel.setPreferredSize(new Dimension(1000, 540));
-//        appletPanel.setBackground(Color.white);
         appletPanel.getInsets().set(0, 0, 0, 0);
 
         frame.setLayout(new FlowLayout(FlowLayout.CENTER));
@@ -96,17 +96,20 @@ public class Main {
         });
         appletPanel.add(app);
 
-        //Rect rect = new Rect(new Point(100, 100), new Point(150, 150));
+        Button clear = new Button("Clear");
+        toolbarPanel.add(clear);
+        clear.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                app.core = new Core();
+                addBorder();
 
-        //app.core.addDrawable(rect);
+            }
+        });
+
         app.setPreferredSize(new Dimension(1000, 540));
-//        DrawableListener dropListener = new PolyDrawListener();//new DropListener(DropListener.DropType.Rect);
-//        app.addMouseListener(dropListener);
-//        app.addMouseMotionListener(dropListener);
 
-        Ball ball = new Ball(new Point(100, 100));
-        app.core.addDrawable(ball);
-
+        addBorder();
         frame.setVisible(true);
         frame.addWindowListener(new WindowListener() {
             @Override
@@ -145,5 +148,15 @@ public class Main {
 
             }
         });
+    }
+
+    private static void addBorder() {
+        Poly border = new Poly();
+        border.addPoint(new Point(20,10));
+        border.addPoint(new Point(980,10));
+        border.addPoint(new Point(980,500));
+        border.addPoint(new Point(20,500));
+
+        app.core.addDrawable(border);
     }
 }

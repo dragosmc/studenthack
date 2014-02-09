@@ -45,4 +45,8 @@ public class Core {
     public PathFinder getPathFinder() {
         return pathFinder;
     }
+
+    public void reset() {
+        drawables = new LinkedList<Drawable>();
+    }
 }
