@@ -2,22 +2,21 @@ import java.awt.*;
 import java.util.LinkedList;
 import java.util.List;
 
-import static java.lang.Math.sqrt;
-
 /**
  * Created by Adam Bedford on 08/02/14.
  */
 public class PathFinder {
-    private static final int BOUNCES = 10;
+    private static final int BOUNCES = 15;
     private List<Vector> vectors;
     private Collisionable previous = null;
+    private int count;
 
     public PathFinder() {
         vectors = new LinkedList<Vector>();
     }
 
     public void run(Vector v) {
-        int cnt = BOUNCES;
+        count = BOUNCES;
         Vector tmpVec = v;
         vectors.clear();
 
@@ -25,10 +24,12 @@ public class PathFinder {
 
         resolve(collisions);
 
-        while (cnt-- > 0) {
+        while (count-- > 0) {
             if (tmpVec != null) {
                 vectors.add(tmpVec);
                 tmpVec = _run(tmpVec, collisions);
+            } else {
+                break;
             }
         }
     }
@@ -57,17 +58,14 @@ public class PathFinder {
                 }
             }
         }
-
         previous = C;
         if (C != null) {
+            v.setDir(v.dx * distance, v.dy * distance);
             if (C instanceof Segment && ((Segment) C).isEndPoint()) {
-                v.setDir(v.dx * distance, v.dy * distance);
                 return null;
             }
-            v.setDir(v.dx * distance, v.dy * distance);
             return C.bounce(v, 1);
         }
-
         return null;
     }
 
@@ -78,5 +76,9 @@ public class PathFinder {
             g.drawLine((int) vector.x, (int) vector.y, (int) vector.x + (int) vector.dx, (int) vector.y + (int) vector.dy);
         }
         g.setColor(c);
+    }
+
+    public int getBounces() {
+        return BOUNCES - count - 1;
     }
 }

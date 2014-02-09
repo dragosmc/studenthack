@@ -1,25 +1,22 @@
-import org.lwjgl.LWJGLException;
-import org.lwjgl.opengl.GLContext;
-
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
-import java.util.List;
 
 /**
  * Created by Adam Bedford on 08/02/14.
  */
 public class Main {
     public static Frame frame;
-    public static applet app;
+    public static CrazyApplet app;
+    private static Label bounces = null;
 
     public static void main(String args[]) {
         frame = new Frame("Crazy Golf");
         frame.setSize(1000, 600);
         frame.getInsets().set(0, 0, 0, 0);
-        app = new applet();
+        app = new CrazyApplet();
 
         Panel toolbarPanel = new Panel();
         toolbarPanel.setPreferredSize(new Dimension(1000, 30));
@@ -45,19 +42,6 @@ public class Main {
 
             }
         });
-
-        Button changeBounce = new Button("Change Bounce");
-        toolbarPanel.add(changeBounce);
-
-        changeBounce.addActionListener (new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-
-            }
-        });
-
-
-
 
         Button drawSquare = new Button("DrawSquare");
         toolbarPanel.add(drawSquare);
@@ -107,7 +91,6 @@ public class Main {
                 app.addMouseListeners(new HitListener());
             }
         });
-        appletPanel.add(app);
 
         Button clear = new Button("Clear");
         toolbarPanel.add(clear);
@@ -120,9 +103,26 @@ public class Main {
             }
         });
 
+        Button changeBounce = new Button("Change Bounce");
+        toolbarPanel.add(changeBounce);
+        changeBounce.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+
+            }
+        });
+
+        bounces = new Label("Bounces");
+        bounces.setVisible(true);
+        bounces.setText("Bounces: 0");
+        toolbarPanel.add(bounces);
+
+
         app.setPreferredSize(new Dimension(1000, 540));
 
         addBorder();
+
+        appletPanel.add(app);
         frame.setVisible(true);
         frame.addWindowListener(new WindowListener() {
             @Override
@@ -165,11 +165,15 @@ public class Main {
 
     private static void addBorder() {
         Poly border = new Poly();
-        border.addPoint(new Point(20,10));
-        border.addPoint(new Point(980,10));
-        border.addPoint(new Point(980,500));
-        border.addPoint(new Point(20,500));
+        border.addPoint(new Point(20, 10));
+        border.addPoint(new Point(980, 10));
+        border.addPoint(new Point(980, 500));
+        border.addPoint(new Point(20, 500));
 
         app.core.addDrawable(border);
+    }
+
+    public static Label getBounceCounter() {
+        return bounces;
     }
 }

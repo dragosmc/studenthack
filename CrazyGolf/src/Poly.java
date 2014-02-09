@@ -13,7 +13,7 @@ public class Poly implements Primitive, Drawable {
     @Override
     public void resolve(List<Collisionable> list) {
         for (int i = 0; i < pointList.size(); i++) {
-            list.add(new dPoint(x[i], y[i]));
+            list.add(new DPoint(x[i], y[i]));
         }
 
         for (int i = 0; i < pointList.size(); i++) {

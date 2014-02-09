@@ -24,13 +24,11 @@ public class HitListener extends DrawableListener {
             if (mouseLocationPoint == null || ballLocation == null) {
                 return;
             }
-            //Stroke s = g.getStroke();
-            //g.setStroke(new BasicStroke(1f, BasicStroke.CAP_SQUARE, BasicStroke.JOIN_MITER, 0, new float[]{10, 10}, 0));
+            Stroke s = g.getStroke();
+            g.setStroke(new BasicStroke(1f, BasicStroke.CAP_SQUARE, BasicStroke.JOIN_MITER, 2, new float[]{10, 10}, 0));
             g.drawLine(ballLocation.x, ballLocation.y, mouseLocationPoint.x, mouseLocationPoint.y);
-            //g.setStroke(s);
-
+            g.setStroke(s);
         }
-
         @Override
         public void drawGL() {
 
@@ -62,16 +60,18 @@ public class HitListener extends DrawableListener {
     public void mouseClicked(MouseEvent mouseEvent) {
         setDirectionAndRun(mouseEvent);
         Main.app.core.removeDrawable(ghostPoint);
-
+        Main.app.removeMouseListener(this);
     }
 
     private void setDirectionAndRun(MouseEvent mouseEvent) {
         Vector v = new Vector();
-        double Ballx = ghostPoint.ballLocation.getX();
-        double Bally = ghostPoint.ballLocation.getY();
-        v.setLocation(Ballx, Bally);
-        v.setDir(mouseEvent.getX() - Ballx, mouseEvent.getY() - Bally);
-        Main.app.core.getPathFinder().run(v);
+        double ballx = ghostPoint.ballLocation.getX();
+        double bally = ghostPoint.ballLocation.getY();
+        v.setLocation(ballx, bally);
+        v.setDir(mouseEvent.getX() - ballx, mouseEvent.getY() - bally);
+        PathFinder pathFinder = Main.app.core.getPathFinder();
+        pathFinder.run(v);
+        Main.getBounceCounter().setText("Bounces: " + pathFinder.getBounces());
     }
 
     @Override
@@ -80,6 +80,5 @@ public class HitListener extends DrawableListener {
             ghostPoint.mouseLocationPoint.setLocation(mouseEvent.getX(), mouseEvent.getY());
             Main.app.repaint();
         }
-
     }
 }

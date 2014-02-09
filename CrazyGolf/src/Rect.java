@@ -1,8 +1,5 @@
-import org.lwjgl.LWJGLException;
 import org.lwjgl.opengl.GL11;
-import org.lwjgl.opengl.GLContext;
 
-import javax.naming.Context;
 import java.awt.*;
 import java.util.LinkedList;
 import java.util.List;
@@ -29,7 +26,7 @@ public class Rect implements Primitive, Dropable, Drawable {
 
     @Override
     public void resolve(List<Collisionable> list) {
-        List<dPoint> tempList = new LinkedList<dPoint>();
+        List<DPoint> tempList = new LinkedList<DPoint>();
         for (int i = 0; i <= 3; i++) {
             tempList.add(getPoint(x[i], y[i]));
         }
@@ -54,7 +51,7 @@ public class Rect implements Primitive, Dropable, Drawable {
         }
     }
 
-    private dPoint getPoint(double templateX, double templateY) {
+    private DPoint getPoint(double templateX, double templateY) {
         double Ax = centre.getX();
         double ABx = midPoint.getX() - Ax;
         double Ay = centre.getY();
@@ -62,7 +59,7 @@ public class Rect implements Primitive, Dropable, Drawable {
 
         double Nx = templateX * ABx - templateY * ABy + Ax;
         double Ny = templateX * ABy + templateY * ABx + Ay;
-        return new dPoint(Nx, Ny);
+        return new DPoint(Nx, Ny);
     }
 
     public Point getCentre() {
@@ -86,7 +83,7 @@ public class Rect implements Primitive, Dropable, Drawable {
         int[] y = new int[4];
 
         for (int i = 0; i <= 3; i++) {
-            dPoint tmpPoint = getPoint(Rect.x[i], Rect.y[i]);
+            DPoint tmpPoint = getPoint(Rect.x[i], Rect.y[i]);
             x[i] = (int) tmpPoint.getX();
             y[i] = (int) tmpPoint.getY();
         }
@@ -98,7 +95,7 @@ public class Rect implements Primitive, Dropable, Drawable {
     @Override
     public void drawGL() {
         GL11.glBegin(GL11.GL_QUADS);
-        dPoint dp[] = new dPoint[4];
+        DPoint dp[] = new DPoint[4];
         for(int i = 0; i <= 3; i++){
             dp[i] = getPoint(Rect.x[i], Rect.y[i]);
         }

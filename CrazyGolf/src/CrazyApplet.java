@@ -7,10 +7,10 @@ import java.awt.image.BufferedImage;
 /**
  * Created by Adam Bedford on 08/02/14.
  */
-public class applet extends Applet {
+public class CrazyApplet extends java.applet.Applet {
     public Core core;
 
-    public applet() {
+    public CrazyApplet() {
         core = new Core();
 
     }
