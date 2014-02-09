@@ -29,7 +29,7 @@ public class OpenGLDisplay {
             drawableList = new LinkedList<Drawable>();
 
             drawableList.add(new Rect(new Point(0, 0), new Point(50, 50)));
-            drawableList.add(new Rect(new Point(0, 0), new Point(25, 25)));
+            drawableList.add(new Rect(new Point(25, 25), new Point(50, 50)));
         } else {
             drawableList = drawables;
         }
@@ -108,6 +108,16 @@ public class OpenGLDisplay {
         List<Segment> segments = new LinkedList<Segment>();
         resolve(segments);
 
+        double x = 0, y = 0;
+
+        for (Segment segment : segments) {
+            x += segment.getX();
+            y += segment.getY();
+        }
+
+        x /= segments.size();
+        y /= segments.size();
+
         GL11.glPushMatrix();
         {
             GL11.glTranslated(0, 0, -500);
@@ -116,6 +126,7 @@ public class OpenGLDisplay {
             {
                 GL11.glRotated(30, 1, 0, 0);
                 GL11.glRotated(angle, 0, 1, 0);
+                GL11.glTranslated(-x / 2, 0, -y / 2);
 
                 GL11.glBegin(GL_QUADS);
                 for (Segment segment : segments) {
