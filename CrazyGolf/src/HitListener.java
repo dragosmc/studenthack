@@ -1,9 +1,5 @@
-import com.sun.prism.*;
-
 import java.awt.*;
-import java.awt.BasicStroke;
 import java.awt.event.MouseEvent;
-import java.awt.geom.Arc2D;
 
 /**
  * Created by Dragos on 08/02/14.

@@ -38,7 +38,7 @@ public class CrazyApplet extends java.applet.Applet {
 //            }
         }
 
-        core.getPathFinder().draw(g);
+        core.getPathFinder().draw((Graphics2D) g);
     }
 
     public void removeMouseListeners(DrawableListener dl) {

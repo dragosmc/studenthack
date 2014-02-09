@@ -69,13 +69,16 @@ public class PathFinder {
         return null;
     }
 
-    public void draw(Graphics g) {
+    public void draw(Graphics2D g) {
         Color c = g.getColor();
+        Stroke s = g.getStroke();
         g.setColor(Color.blue);
+        g.setStroke(new BasicStroke(1f, BasicStroke.CAP_SQUARE, BasicStroke.JOIN_MITER, 2, new float[]{10, 10}, 0));
         for (Vector vector : vectors) {
             g.drawLine((int) vector.x, (int) vector.y, (int) vector.x + (int) vector.dx, (int) vector.y + (int) vector.dy);
         }
         g.setColor(c);
+        g.setStroke(s);
     }
 
     public int getBounces() {
