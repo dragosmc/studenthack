@@ -6,6 +6,7 @@ import java.util.LinkedList;
 import java.util.List;
 
 import collisionable_src.Segment;
+import collisionable_src.Vector;
 import drawable_src.Rect;
 import interface_src.Collisionable;
 import interface_src.Drawable;
@@ -37,7 +38,7 @@ public class OpenGLDisplay {
         }
 
         try {
-            Display.setDisplayMode(new DisplayMode(720, 400));
+            Display.setDisplayMode(new DisplayMode(720, 500));
             Display.create();
 
             FloatBuffer position = BufferUtils.createFloatBuffer(4);
@@ -64,7 +65,7 @@ public class OpenGLDisplay {
             GL11.glMatrixMode(GL11.GL_PROJECTION);
             GL11.glLoadIdentity();
             //GL11.glFrustum(-1, 1, .55, .55, 1, 1000);
-            GLU.gluPerspective(45, (float) (720.0 / 400.0), 1, 1000);
+            GLU.gluPerspective(45, (float) (720.0 / 500.0), 1, 1600);
             GL11.glMatrixMode(GL11.GL_MODELVIEW);
 
             angle = 0;
@@ -99,7 +100,7 @@ public class OpenGLDisplay {
 
     private void update() {
         GL11.glLoadIdentity();
-        GL11.glViewport(0, 0, 720, 400);
+        GL11.glViewport(0, 0, 720, 500);
 
         GL11.glClear(GL11.GL_DEPTH_BUFFER_BIT | GL11.GL_COLOR_BUFFER_BIT);
 
@@ -111,35 +112,65 @@ public class OpenGLDisplay {
         resolve(segments);
 
         double x = 0, y = 0;
-
+        double minx = Double.POSITIVE_INFINITY, maxx = Double.NEGATIVE_INFINITY;
+        double miny = Double.POSITIVE_INFINITY, maxy = Double.NEGATIVE_INFINITY;
         for (Segment segment : segments) {
-            x += segment.getX();
-            y += segment.getY();
+            x = segment.getX();
+            y = segment.getY();
+
+            if (x < minx) minx = x;
+            if (x > maxx) maxx = x;
+            if (y < miny) miny = y;
+            if (y > maxy) maxy = y;
         }
 
-        x /= segments.size();
-        y /= segments.size();
+        x = (maxx - minx);
+        y = (maxy - miny);
 
         GL11.glPushMatrix();
         {
-            GL11.glTranslated(0, 0, -500);
+            GL11.glTranslated(0, 0, -1000);
 
             GL11.glPushMatrix();
             {
                 GL11.glRotated(30, 1, 0, 0);
                 GL11.glRotated(angle, 0, 1, 0);
                 GL11.glTranslated(-x / 2, 0, -y / 2);
+                GL11.glEnable(GL_LIGHTING);
 
                 GL11.glBegin(GL_QUADS);
                 for (Segment segment : segments) {
-                    GL11.glVertex3d(segment.getX(), 0, segment.getY());
-                    GL11.glVertex3d(segment.getX() + segment.getDx(), 0, segment.getY() + segment.getDy());
-                    GL11.glVertex3d(segment.getX() + segment.getDx(), 20, segment.getY() + segment.getDy());
-                    GL11.glVertex3d(segment.getX(), 20, segment.getY());
+                    GL11.glVertex3d(segment.getX(), -10, segment.getY());
+                    GL11.glVertex3d(segment.getX() + segment.getDx(), -10, segment.getY() + segment.getDy());
+                    GL11.glVertex3d(segment.getX() + segment.getDx(), 10, segment.getY() + segment.getDy());
+                    GL11.glVertex3d(segment.getX(), 10, segment.getY());
 
                     double l = Math.sqrt(Math.pow(segment.getDy(), 2) + Math.pow(segment.getDx(), 2));
                     GL11.glNormal3d(-segment.getDy() / l, 0, segment.getDx() / l);
                 }
+                GL11.glEnd();
+
+                GL11.glColor3f(0, 0, 1);
+                GL11.glDisable(GL_LIGHTING);
+                GL11.glBegin(GL_LINE_STRIP);
+
+                try {
+                    PathFinder pathFinder = Main.app.core.getPathFinder();
+                    List<Vector> vectors = pathFinder.getVectors();
+
+                    if (vectors.size() > 0) {
+                        Vector tmpV = null;
+                        for (Vector vector : vectors) {
+                            GL11.glVertex3d(vector.getX(), 0, vector.getY());
+                            tmpV = vector;
+                        }
+                        if (tmpV != null) {
+                            GL11.glVertex3d(tmpV.getX() + tmpV.getDx(), 0, tmpV.getY() + tmpV.getDy());
+                        }
+                    }
+                } catch (NullPointerException e) {
+                }
+
                 GL11.glEnd();
             }
             GL11.glPopMatrix();
