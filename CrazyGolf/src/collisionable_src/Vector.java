@@ -15,12 +15,9 @@ public class Vector {
     // starting points
     double x;
     double y;
-
     // direction
     double dx;
     double dy;
-
-
 
     public void setLocation(double x, double y){
         this.x = x;

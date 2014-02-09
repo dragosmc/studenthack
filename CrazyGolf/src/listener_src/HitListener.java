@@ -4,6 +4,7 @@ import collisionable_src.Vector;
 import drawable_src.Ball;
 import framework_src.Main;
 import framework_src.PathFinder;
+import framework_src.PlayMode;
 import interface_src.Drawable;
 
 import java.awt.*;
@@ -71,6 +72,8 @@ public class HitListener extends DrawableListener {
         if(Main.playMode){
             PathFinder temp =  Main.app.core.getPathFinder();
             List<Vector> list =  temp.getVectors();
+            PlayMode playMode = new PlayMode(list);
+            playMode.run();
         }
     }
 

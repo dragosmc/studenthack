@@ -45,4 +45,9 @@ public class Ball implements Drawable, Dropable {
           return false;
 
     }
+
+
+    public void setLocation(double x, double y) {
+        this.point.setLocation(x,y);
+    }
 }
