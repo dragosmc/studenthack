@@ -10,7 +10,7 @@ public class Hole implements Drawable, Dropable, Primitive {
 
     public Hole(Point point) {
         this.point = point;
-        this.rect = new Rect(point,new Point(point.x + 5,point.y + 5));
+        this.rect = new Rect(point,new Point(point.x - 5,point.y - 5));
 
     }
 
@@ -21,8 +21,9 @@ public class Hole implements Drawable, Dropable, Primitive {
 
     @Override
     public void draw(Graphics2D g) {
+        g.setColor(Color.RED);
         g.fillOval(point.x,point.y,10,10);
-
+        g.setColor(Color.BLACK);
     }
 
     @Override

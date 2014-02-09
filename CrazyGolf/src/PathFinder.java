@@ -2,6 +2,8 @@ import java.awt.*;
 import java.util.LinkedList;
 import java.util.List;
 
+import static java.lang.Math.sqrt;
+
 /**
  * Created by Adam Bedford on 08/02/14.
  */
@@ -19,21 +21,15 @@ public class PathFinder {
         Vector tmpVec = v;
         vectors.clear();
 
-//        System.out.println(String.format("%f, %f - %f, %f", v.x, v.y, v.dx, v.dy));
-
         List<Collisionable> collisions = new LinkedList<Collisionable>();
 
         resolve(collisions);
-//        for (Collisionable collision : collisions) {
-//            System.out.println(collision.toString());
-//        }
 
         while (cnt-- > 0) {
             if (tmpVec != null) {
                 vectors.add(tmpVec);
                 tmpVec = _run(tmpVec, collisions);
-            } //else
-//                System.out.println("No Collisions");
+            }
         }
     }
 
@@ -50,27 +46,24 @@ public class PathFinder {
         double distance = Double.POSITIVE_INFINITY;
         Collisionable C = null;
 
-        for (Collisionable collision : collisions)
+        for (Collisionable collision : collisions) {
             if (collision != previous) {
                 double d;
                 if ((d = collision.collidesAfter(v)) != Double.NaN) {
-//                    System.out.println("Distance: " + d + "," + distance);
                     if (d < distance) {
                         distance = d;
                         C = collision;
                     }
-                } else {
-//                    System.out.println("NaN");
                 }
             }
+        }
 
         previous = C;
         if (C != null) {
-//            System.out.println(String.format("Distance: %f", distance));
-//            if (C instanceof Segment && ((Segment)C).isEndPoint()) {
-//                System.out.println("HIT THE HOLE");
-//                return null;
-//            }
+            if (C instanceof Segment && ((Segment) C).isEndPoint()) {
+                v.setDir(v.dx * distance, v.dy * distance);
+                return null;
+            }
             v.setDir(v.dx * distance, v.dy * distance);
             return C.bounce(v, 1);
         }
