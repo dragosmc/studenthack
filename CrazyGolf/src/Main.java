@@ -46,6 +46,19 @@ public class Main {
             }
         });
 
+        Button changeBounce = new Button("Change Bounce");
+        toolbarPanel.add(changeBounce);
+
+        changeBounce.addActionListener (new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+
+            }
+        });
+
+
+
+
         Button drawSquare = new Button("DrawSquare");
         toolbarPanel.add(drawSquare);
         drawSquare.addActionListener(new ActionListener() {
@@ -86,7 +99,7 @@ public class Main {
             }
         });
 
-        Button setHittingDirection = new Button("Set hitting direction");
+        Button setHittingDirection = new Button("Set Hitting direction");
         toolbarPanel.add(setHittingDirection);
         setHittingDirection.addActionListener(new ActionListener() {
             @Override
