@@ -20,6 +20,14 @@ public class PathFinder {
     private int count;
     private boolean draw = true;
 
+    public List<Vector> getVectors() {
+        return vectors;
+    }
+
+    public void setVectors(List<Vector> vectors) {
+        this.vectors = vectors;
+    }
+
     public PathFinder() {
         vectors = new LinkedList<Vector>();
     }

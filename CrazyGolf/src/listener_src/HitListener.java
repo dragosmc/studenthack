@@ -8,6 +8,7 @@ import interface_src.Drawable;
 
 import java.awt.*;
 import java.awt.event.MouseEvent;
+import java.util.List;
 
 /**
  * Created by Dragos on 08/02/14.
@@ -62,9 +63,15 @@ public class HitListener extends DrawableListener {
 
     @Override
     public void mouseClicked(MouseEvent mouseEvent) {
+
         setDirectionAndRun(mouseEvent);
+
         Main.app.core.removeDrawable(ghostPoint);
         Main.app.removeMouseListener(this);
+        if(Main.playMode){
+            PathFinder temp =  Main.app.core.getPathFinder();
+            List<Vector> list =  temp.getVectors();
+        }
     }
 
     private void setDirectionAndRun(MouseEvent mouseEvent) {

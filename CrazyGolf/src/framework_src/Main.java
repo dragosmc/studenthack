@@ -3,6 +3,7 @@ package framework_src;
 import drawable_src.Ball;
 import drawable_src.Hole;
 import drawable_src.Poly;
+import framework_src.CrazyApplet;
 import interface_src.Drawable;
 import listener_src.DropListener;
 import listener_src.HitListener;
@@ -21,6 +22,7 @@ import java.util.List;
 public class Main {
     public static Frame frame;
     public static CrazyApplet app;
+    public static boolean playMode;
     private static Label bounces = null;
 
     public static void main(String args[]) {
@@ -219,6 +221,7 @@ public class Main {
                 List<Drawable> list = app.core.getDrawables();
                 boolean startPresent = false;
                 boolean endPresent = false;
+                playMode = true;
                 //for (Drawable d : list) {
                     //if (d instanceof Ball) {
                         startPresent = true;
@@ -228,7 +231,9 @@ public class Main {
                     //}
                     if (startPresent && endPresent) {
                         toolbarPanel.setVisible(false);
+                        Main.app.core.getPathFinder().setDraw(false);
                         HitListener hitListener = new HitListener();
+
                         app.addMouseListeners(hitListener);
                     }
 
