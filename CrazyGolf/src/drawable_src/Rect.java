@@ -98,36 +98,36 @@ public class Rect implements Primitive, Dropable, Drawable {
 
     }
 
-    @Override
-    public void drawGL() {
-        GL11.glBegin(GL11.GL_QUADS);
-        dPoint dp[] = new dPoint[4];
-        for(int i = 0; i <= 3; i++){
-            dp[i] = getPoint(Rect.x[i], Rect.y[i]);
-        }
-
-        GL11.glVertex3d(dp[0].getX(), dp[0].getY(), 0);
-        GL11.glVertex3d(dp[1].getX(), dp[1].getY(), 0);
-        GL11.glVertex3d(dp[1].getX(), dp[1].getY(), 30);
-        GL11.glVertex3d(dp[0].getX(), dp[0].getY(), 30);
-
-        GL11.glVertex3d(dp[1].getX(), dp[1].getY(), 0);
-        GL11.glVertex3d(dp[2].getX(), dp[2].getY(), 0);
-        GL11.glVertex3d(dp[2].getX(), dp[2].getY(), 30);
-        GL11.glVertex3d(dp[1].getX(), dp[1].getY(), 30);
-
-        GL11.glVertex3d(dp[2].getX(), dp[2].getY(), 0);
-        GL11.glVertex3d(dp[3].getX(), dp[3].getY(), 0);
-        GL11.glVertex3d(dp[3].getX(), dp[3].getY(), 30);
-        GL11.glVertex3d(dp[2].getX(), dp[2].getY(), 30);
-
-        GL11.glVertex3d(dp[3].getX(), dp[3].getY(), 0);
-        GL11.glVertex3d(dp[0].getX(), dp[0].getY(), 0);
-        GL11.glVertex3d(dp[0].getX(), dp[0].getY(), 30);
-        GL11.glVertex3d(dp[3].getX(), dp[3].getY(), 30);
-
-        GL11.glEnd();
-    }
+//    @Override
+//    public void drawGL() {
+//        GL11.glBegin(GL11.GL_QUADS);
+//        dPoint dp[] = new dPoint[4];
+//        for(int i = 0; i <= 3; i++){
+//            dp[i] = getPoint(Rect.x[i], Rect.y[i]);
+//        }
+//
+//        GL11.glVertex3d(dp[0].getX(), dp[0].getY(), 0);
+//        GL11.glVertex3d(dp[1].getX(), dp[1].getY(), 0);
+//        GL11.glVertex3d(dp[1].getX(), dp[1].getY(), 30);
+//        GL11.glVertex3d(dp[0].getX(), dp[0].getY(), 30);
+//
+//        GL11.glVertex3d(dp[1].getX(), dp[1].getY(), 0);
+//        GL11.glVertex3d(dp[2].getX(), dp[2].getY(), 0);
+//        GL11.glVertex3d(dp[2].getX(), dp[2].getY(), 30);
+//        GL11.glVertex3d(dp[1].getX(), dp[1].getY(), 30);
+//
+//        GL11.glVertex3d(dp[2].getX(), dp[2].getY(), 0);
+//        GL11.glVertex3d(dp[3].getX(), dp[3].getY(), 0);
+//        GL11.glVertex3d(dp[3].getX(), dp[3].getY(), 30);
+//        GL11.glVertex3d(dp[2].getX(), dp[2].getY(), 30);
+//
+//        GL11.glVertex3d(dp[3].getX(), dp[3].getY(), 0);
+//        GL11.glVertex3d(dp[0].getX(), dp[0].getY(), 0);
+//        GL11.glVertex3d(dp[0].getX(), dp[0].getY(), 30);
+//        GL11.glVertex3d(dp[3].getX(), dp[3].getY(), 30);
+//
+//        GL11.glEnd();
+//    }
 
 
     public void setEndPoint() {

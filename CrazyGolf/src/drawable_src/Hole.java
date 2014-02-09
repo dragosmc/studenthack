@@ -34,11 +34,6 @@ public class Hole implements Drawable, Dropable, Primitive {
     }
 
     @Override
-    public void drawGL() {
-
-    }
-
-    @Override
     public void resolve(List<Collisionable> list) {
         rect.setEndPoint();
         rect.resolve(list);

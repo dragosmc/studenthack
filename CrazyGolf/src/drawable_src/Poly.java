@@ -42,19 +42,14 @@ public class Poly implements Primitive, Drawable {
     public void draw(Graphics2D g) {
         x = new int[pointList.size()];
         y = new int[pointList.size()];
-        int i=0;
+        int i = 0;
         for (Point point : pointList) {
-            x[i] = (int)point.getX();
-            y[i] = (int)point.getY();
+            x[i] = (int) point.getX();
+            y[i] = (int) point.getY();
             i++;
         }
 
         g.drawPolygon(x, y, pointList.size());
-
-    }
-
-    @Override
-    public void drawGL() {
 
     }
 
