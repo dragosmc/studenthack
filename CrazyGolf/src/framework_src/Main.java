@@ -215,25 +215,26 @@ public class Main {
         play.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-              List<Drawable> list =  Main.app.core.getDrawables();
+                app.core.getPathFinder().setDraw(false);
+                List<Drawable> list = app.core.getDrawables();
                 boolean startPresent = false;
                 boolean endPresent = false;
-                for(Drawable d : list){
-                    if (d instanceof Ball){
-                         startPresent = true;
-                    }
-                    if(d instanceof Hole) {
+                //for (Drawable d : list) {
+                    //if (d instanceof Ball) {
+                        startPresent = true;
+                    //}
+                   // if (d instanceof Hole) {
                         endPresent = true;
-                }
+                    //}
+                    if (startPresent && endPresent) {
+                        toolbarPanel.setVisible(false);
+                        HitListener hitListener = new HitListener();
+                        app.addMouseListeners(hitListener);
+                    }
 
-
-               if(startPresent && endPresent){
-                toolbarPanel.setVisible(false);
-                app.addMouseListeners(new HitListener());
-               }
-
+                //}
             }
-        }});
+        });
 
 
         appletPanel.add(app);

@@ -18,6 +18,7 @@ public class PathFinder {
     private List<Vector> vectors;
     private Collisionable previous = null;
     private int count;
+    private boolean draw = true;
 
     public PathFinder() {
         vectors = new LinkedList<Vector>();
@@ -78,16 +79,18 @@ public class PathFinder {
     }
 
     public void draw(Graphics2D g) {
-        Color c = g.getColor();
-        Stroke s = g.getStroke();
-        g.setColor(Color.blue);
-        g.setStroke(new BasicStroke(1f, BasicStroke.CAP_SQUARE, BasicStroke.JOIN_MITER, 2, new float[]{10, 10}, 0));
-        for (Vector vector : vectors) {
-            g.drawLine((int) vector.getX(), (int) vector.getY(), (int) vector.getX() + (int) vector.getDx(),
-                    (int) vector.getY() + (int) vector.getDy());
+        if (draw) {
+            Color c = g.getColor();
+            Stroke s = g.getStroke();
+            g.setColor(Color.blue);
+            g.setStroke(new BasicStroke(1f, BasicStroke.CAP_SQUARE, BasicStroke.JOIN_MITER, 2, new float[]{10, 10}, 0));
+            for (Vector vector : vectors) {
+                g.drawLine((int) vector.getX(), (int) vector.getY(), (int) vector.getX() + (int) vector.getDx(),
+                        (int) vector.getY() + (int) vector.getDy());
+            }
+            g.setColor(c);
+            g.setStroke(s);
         }
-        g.setColor(c);
-        g.setStroke(s);
     }
 
     public int getBounces() {
@@ -96,5 +99,9 @@ public class PathFinder {
 
     public void setBounces(int bounces) {
         BOUNCES = bounces;
+    }
+
+    public void setDraw(boolean d) {
+        draw = d;
     }
 }
