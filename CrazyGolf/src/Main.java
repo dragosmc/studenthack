@@ -18,7 +18,7 @@ public class Main {
         frame.getInsets().set(0, 0, 0, 0);
         app = new CrazyApplet();
 
-        Panel toolbarPanel = new Panel();
+        final Panel toolbarPanel = new Panel();
         toolbarPanel.setPreferredSize(new Dimension(1000, 30));
         toolbarPanel.setBackground(Color.lightGray);
         toolbarPanel.setLayout(new FlowLayout(FlowLayout.LEFT));
@@ -121,6 +121,18 @@ public class Main {
         app.setPreferredSize(new Dimension(1000, 540));
 
         addBorder();
+        Button play = new Button("Play");
+        toolbarPanel.add(play);
+        play.setVisible(true);
+        play.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                toolbarPanel.setVisible(false);
+                app.addMouseListeners(new HitListener());
+
+            }
+        });
+
 
         appletPanel.add(app);
         frame.setVisible(true);

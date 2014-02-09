@@ -4,7 +4,7 @@ import java.awt.*;
  * Created by Adam Bedford on 08/02/14.
  */
 public class Ball implements Drawable, Dropable {
-    private final Point point;
+    private Point point;
 
     public Ball(Point point) {
         this.point = point;
@@ -19,7 +19,7 @@ public class Ball implements Drawable, Dropable {
     @Override
     public void draw(Graphics2D g) {
 
-       g.fillRect(point.x - 3, point.y - 3, 7, 7);
+       g.fillOval(point.x , point.y, 7, 7);
 
     }
 
@@ -30,5 +30,14 @@ public class Ball implements Drawable, Dropable {
 
     public Point getPoint() {
         return point;
+    }
+    public boolean moveBall(Point offsetVector){
+      if (offsetVector.getX() <=point.getX()+ 5+offsetVector.getX() && offsetVector.getY() <=5+offsetVector.getX()  ){
+          point = new Point((int)(point.getX()+ 5*offsetVector.getX()),(int)(point.getY()+ 5*offsetVector.getX()));
+          return true;
+      }
+        else
+          return false;
+
     }
 }
