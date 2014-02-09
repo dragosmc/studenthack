@@ -6,7 +6,6 @@ import interface_src.Collisionable;
 import interface_src.Drawable;
 import interface_src.Dropable;
 import interface_src.Primitive;
-import org.lwjgl.opengl.GL11;
 
 import java.awt.*;
 import java.util.LinkedList;

@@ -35,10 +35,7 @@ public class HitListener extends DrawableListener {
             g.drawLine(ballLocation.x, ballLocation.y, mouseLocationPoint.x, mouseLocationPoint.y);
             g.setStroke(s);
         }
-        @Override
-        public void drawGL() {
 
-        }
     }
 
     Ball theBall = null;

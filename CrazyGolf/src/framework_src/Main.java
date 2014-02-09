@@ -1,9 +1,6 @@
 package framework_src;
 
-import drawable_src.Ball;
-import drawable_src.Hole;
 import drawable_src.Poly;
-import framework_src.CrazyApplet;
 import interface_src.Drawable;
 import listener_src.DropListener;
 import listener_src.HitListener;
@@ -231,7 +228,7 @@ public class Main {
                     //}
                     if (startPresent && endPresent) {
                         toolbarPanel.setVisible(false);
-                        Main.app.core.getPathFinder().setDraw(false);
+                        Main.app.core.getPathFinder().setDraw(true);
                         HitListener hitListener = new HitListener();
                         app.addMouseListeners(hitListener);
                     }
@@ -240,6 +237,15 @@ public class Main {
             }
         });
 
+        final Button drawOpenGL = new Button("DrawInOpenGL");
+        toolbarPanel.add(drawOpenGL);
+        drawOpenGL.setVisible(true);
+        drawOpenGL.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                new OpenGLDisplay(app.core.getDrawables());
+            }
+        });
 
         appletPanel.add(app);
         frame.setVisible(true);
