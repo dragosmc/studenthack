@@ -1,4 +1,9 @@
+package framework_src;
+
+import drawable_src.Ball;
+import drawable_src.Hole;
 import drawable_src.Poly;
+import interface_src.Drawable;
 import listener_src.DropListener;
 import listener_src.HitListener;
 import listener_src.PolyDrawListener;

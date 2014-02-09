@@ -2,6 +2,8 @@ package listener_src;
 
 import collisionable_src.Vector;
 import drawable_src.Ball;
+import framework_src.Main;
+import framework_src.PathFinder;
 import interface_src.Drawable;
 
 import java.awt.*;

@@ -4,6 +4,7 @@ import drawable_src.Ball;
 import drawable_src.Hole;
 import drawable_src.Rect;
 import drawable_src.Triangle;
+import framework_src.Main;
 import interface_src.Drawable;
 import interface_src.Dropable;
 
