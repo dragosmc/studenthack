@@ -152,12 +152,12 @@ public class OpenGLDisplay {
 
                 GL11.glColor3f(0, 0, 1);
                 GL11.glDisable(GL_LIGHTING);
-                GL11.glBegin(GL_LINE_STRIP);
 
                 try {
                     PathFinder pathFinder = Main.app.core.getPathFinder();
                     List<Vector> vectors = pathFinder.getVectors();
 
+                    GL11.glBegin(GL_LINE_STRIP);
                     if (vectors.size() > 0) {
                         Vector tmpV = null;
                         for (Vector vector : vectors) {
@@ -168,10 +168,18 @@ public class OpenGLDisplay {
                             GL11.glVertex3d(tmpV.getX() + tmpV.getDx(), 0, tmpV.getY() + tmpV.getDy());
                         }
                     }
+                    GL11.glEnd();
+
+                    GL11.glPointSize(5);
+
+                    if (vectors.size() > 0) {
+                        GL11.glBegin(GL_POINTS);
+                        Vector v = vectors.iterator().next();
+                        GL11.glVertex3d(v.getX(), 0, v.getY());
+                        GL11.glEnd();
+                    }
                 } catch (NullPointerException e) {
                 }
-
-                GL11.glEnd();
             }
             GL11.glPopMatrix();
         }
