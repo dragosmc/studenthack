@@ -21,7 +21,7 @@ public class Rect implements Primitive, Dropable, Drawable {
     private static final double x[] = {1, -1, -1, 1};
     private static final double y[] = {1, 1, -1, -1};
     private boolean endPoint = false;
-
+    Color color = Color.cyan;
     //Nx = xABx - yAB + Ax
     //Ny = xABy + yABx + Ay
     //ABx = Bx - Ax
@@ -93,6 +93,10 @@ public class Rect implements Primitive, Dropable, Drawable {
             y[i] = (int) tmpPoint.getY();
         }
 
+        Color prevColor = g.getColor();
+        g.setColor(color);
+        g.fillPolygon(x, y, 4);
+        g.setColor(prevColor);
         g.drawPolygon(x, y, 4);
 
     }

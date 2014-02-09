@@ -19,6 +19,7 @@ public class Triangle implements Primitive, Drawable, Dropable {
     private Point centre;
     private Point corner;
     private ArrayList<dPoint> template =  new ArrayList<dPoint>();
+    Color color = Color.CYAN;
 
     public Triangle(Point mid, Point corn ) {
         centre = mid;
@@ -87,6 +88,10 @@ public class Triangle implements Primitive, Drawable, Dropable {
             y[i] = (int) tmpPoint.getY();
         }
 
+        Color prevColor = g.getColor();
+        g.setColor(color);
+        g.fillPolygon(x, y, 3);
+        g.setColor(prevColor);
         g.drawPolygon(x, y, 3);
     }
 

@@ -90,7 +90,7 @@ public class PathFinder {
         if (draw) {
             Color c = g.getColor();
             Stroke s = g.getStroke();
-            g.setColor(Color.blue);
+            g.setColor(Color.DARK_GRAY);
             g.setStroke(new BasicStroke(1f, BasicStroke.CAP_SQUARE, BasicStroke.JOIN_MITER, 2, new float[]{10, 10}, 0));
             for (Vector vector : vectors) {
                 g.drawLine((int) vector.getX(), (int) vector.getY(), (int) vector.getX() + (int) vector.getDx(),

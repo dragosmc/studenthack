@@ -17,6 +17,16 @@ public class Poly implements Primitive, Drawable {
     public int x[]; //x coordinates
     public int y[]; //y coordinates
     private List<Point> pointList = new LinkedList<Point>();
+    Color color = Color.CYAN;
+
+    public Poly() {
+        super();
+    }
+
+    public Poly(Color color) {
+        super();
+        this.color = color;
+    }
 
     @Override
     public void resolve(List<Collisionable> list) {
@@ -48,7 +58,10 @@ public class Poly implements Primitive, Drawable {
             y[i] = (int) point.getY();
             i++;
         }
-
+        Color prevColor = g.getColor();
+        g.setColor(color);
+        g.fillPolygon(x, y, pointList.size());
+        g.setColor(prevColor);
         g.drawPolygon(x, y, pointList.size());
 
     }

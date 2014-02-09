@@ -26,7 +26,9 @@ public class Main {
         frame = new Frame("Crazy Golf");
         frame.setSize(1000, 600);
         frame.getInsets().set(0, 0, 0, 0);
+        frame.setBackground(Color.GREEN);
         app = new CrazyApplet();
+
 
         final Panel toolbarPanel = new Panel();
         toolbarPanel.setPreferredSize(new Dimension(1000, 30));
@@ -37,12 +39,13 @@ public class Main {
         Panel appletPanel = new Panel();
         appletPanel.setPreferredSize(new Dimension(1000, 540));
         appletPanel.getInsets().set(0, 0, 0, 0);
+        appletPanel.setBackground(Color.GREEN);
 
         frame.setLayout(new FlowLayout(FlowLayout.CENTER));
         frame.add(toolbarPanel);
         frame.add(appletPanel);
 
-        Button drawPoly = new Button("DrawPoly");
+        final Button drawPoly = new Button("DrawPoly");
         toolbarPanel.add(drawPoly);
         drawPoly.addActionListener(new ActionListener() {
             @Override
@@ -53,7 +56,7 @@ public class Main {
             }
         });
 
-        Button drawSquare = new Button("DrawSquare");
+        final Button drawSquare = new Button("DrawSquare");
         toolbarPanel.add(drawSquare);
         drawSquare.addActionListener(new ActionListener() {
             @Override
@@ -63,7 +66,7 @@ public class Main {
 
             }
         });
-        Button drawTriangle = new Button("DrawTriangle");
+        final Button drawTriangle = new Button("DrawTriangle");
         toolbarPanel.add(drawTriangle);
         drawTriangle.addActionListener(new ActionListener() {
             @Override
@@ -73,7 +76,7 @@ public class Main {
             }
         });
 
-        Button setStartPoint = new Button("SetStart");
+        final Button setStartPoint = new Button("SetStart");
         toolbarPanel.add(setStartPoint);
         setStartPoint.addActionListener(new ActionListener() {
             @Override
@@ -83,7 +86,7 @@ public class Main {
             }
         });
 
-        Button setHole = new Button("SetHole");
+        final Button setHole = new Button("SetHole");
         toolbarPanel.add(setHole);
         setHole.addActionListener(new ActionListener() {
             @Override
@@ -208,7 +211,7 @@ public class Main {
         app.setPreferredSize(new Dimension(1000, 540));
 
         addBorder();
-        Button play = new Button("Play");
+        final Button play = new Button("Play");
         toolbarPanel.add(play);
         play.setVisible(true);
         play.addActionListener(new ActionListener() {
@@ -227,13 +230,22 @@ public class Main {
                         endPresent = true;
                     //}
                     if (startPresent && endPresent) {
-                        toolbarPanel.setVisible(false);
+                        setDrawingButtonsVisible(false);
                         Main.app.core.getPathFinder().setDraw(true);
                         HitListener hitListener = new HitListener();
                         app.addMouseListeners(hitListener);
                     }
 
                 //}
+            }
+
+            public void setDrawingButtonsVisible(boolean drawingButtonsVisible) {
+                drawPoly.setVisible(drawingButtonsVisible);
+                drawSquare.setVisible(drawingButtonsVisible);
+                drawTriangle.setVisible(drawingButtonsVisible);
+                setHole.setVisible(drawingButtonsVisible);
+                setStartPoint.setVisible(drawingButtonsVisible);
+                play.setVisible(drawingButtonsVisible);
             }
         });
 
@@ -289,12 +301,11 @@ public class Main {
     }
 
     private static void addBorder() {
-        Poly border = new Poly();
+        Poly border = new Poly(Color.GREEN);
         border.addPoint(new Point(20, 10));
         border.addPoint(new Point(980, 10));
         border.addPoint(new Point(980, 500));
         border.addPoint(new Point(20, 500));
-
         app.core.addDrawable(border);
     }
 
